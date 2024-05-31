@@ -27,6 +27,7 @@
     #tray,
     #window,
     #battery,
+    #network,
     #workspaces {
       font-family: Roboto;
       border-radius: 5px;

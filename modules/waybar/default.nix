@@ -23,7 +23,7 @@
         ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "battery" "clock" "tray" ];
+        modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "battery" "network" "clock" "tray" ];
 
         "sway/window" = {
 	        max-length = 70;
@@ -70,6 +70,12 @@
 		      ];
 	      };
           
+        "network" = {
+          format-wifi = "{essid} ({signalStrength}%) ";
+          format-ethernet = "";
+          format-disconnected = "Disconnected ";
+        };
+        
 	      "pulseaudio" = {
           format = "{volume}% {icon} {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
