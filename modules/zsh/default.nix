@@ -1,4 +1,4 @@
-{config, pkgs, inputs, ...}: let
+{ pkgs, inputs, username, ...}: let
   history = 1000000;
 
 in {
@@ -7,7 +7,7 @@ in {
     enableCompletion = true;
 
     history = {
-      path = "${config.home.homeDirectory}/.zsh_history";
+      path = "/home/${username}/.zsh_history";
       save = history;
       size = history;
     };

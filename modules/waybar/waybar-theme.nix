@@ -1,4 +1,4 @@
-{ ... }:
+{ username, ... }:
 {
   programs.waybar.style = ''
     * {
@@ -39,21 +39,30 @@
     }
 
     #workspaces button {
-      padding: 0 3px 0 0;
+      all: initial;
+      padding: 2px 5px 2px 5px;
       margin: 0;
       border-radius: unset;
+      color: #b5b5ad;
     }
     
-    #workspaces button.empty {
-      color: #414a4c;
+    button:hover {
+      box-shadow: none; /* Remove predefined box-shadow */
+      text-shadow: none; /* Remove predefined text-shadow */
+      background: none; /* Remove predefined background color (white) */
+      transition: none; /* Disable predefined animations */
     }
     
-    #workspaces button.active {
+    #workspaces button.focused {
       color: #ffffff;
     }
 
     #workspaces button.visible {
-      color: #cfcfc4;
+      color: #ffffff;
+    }
+
+    #workspaces button.persistent {
+      color: #414a4c;
     }
     
     #workspaces button.urgent {

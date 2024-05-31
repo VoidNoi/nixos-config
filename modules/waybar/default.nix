@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
 
   imports = [
@@ -21,21 +21,23 @@
           "HDMI-A-1"
           "HDMI-A-2"
         ];
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
+        modules-left = [ "sway/workspaces" ];
+        modules-center = [ "sway/window" ];
         modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "clock" "tray" ];
 
-        "hyprland/window" = {
+        "sway/window" = {
 	        max-length = 70;
 	        separate-outputs = true;
 	      };
 
-        "hyprland/workspaces" = {
+        "sway/workspaces" = {
           disable-scroll = true;
+          all-outputs = true;
 	        format = "{icon}";
 	        format-icons = {
 	          "default" = "";
-	          "active" = "";
+	          #"active" = "";
+	          "focused" = "";
 	          "urgent" = "";
 	        };
 	        persistent-workspaces = {

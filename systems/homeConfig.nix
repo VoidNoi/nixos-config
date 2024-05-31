@@ -1,25 +1,25 @@
-{config, pkgs, inputs, ... }: let
+{config, pkgs, inputs, username, ... }: let
 
   inherit (config.lib.file) mkOutOfStoreSymlink;
 
 in {
 
-  imports = [
-    ./modules/theme
-    ./modules/hyprland
-    ./modules/picom
-    ./modules/zsh
-    ./modules/kitty
-    ./modules/dunst
-    ./modules/rofi
-    ./modules/waybar
-    ./modules/emacs
+  imports = [ 
+    ../modules/theme
+    ../modules/picom
+    ../modules/zsh
+    ../modules/kitty
+    ../modules/dunst
+    ../modules/rofi
+    ../modules/waybar
+    ../modules/emacs
+    ../modules/sway    
   ];
-
+  
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "noi";
-  home.homeDirectory = "/home/noi";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   xdg.desktopEntries = {
     arduino-ide = {
@@ -57,7 +57,7 @@ in {
     userEmail = "voidnoi@proton.me";
     extraConfig = {
       init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
+      #safe.directory = "/etc/nixos";
     };
   };
  
@@ -65,44 +65,32 @@ in {
     neovim
     arduino-ide
     feh
-    telegram-desktop
-    wineWowPackages.waylandFull
-    lutris
     winetricks
     pavucontrol
     unzip
     gimp
-    droidcam
     p7zip
     mpv
     gnome.gnome-disk-utility
     unrar
     tor-browser-bundle-bin
-    transmission-gtk
-    protontricks
     killall
     onlyoffice-bin
     gnome.file-roller
-    obsidian
     syncthing
     lua
-    revanced-cli
     imagemagick
     ani-cli
-    element-desktop
     nix-prefetch-git
     yt-dlp
     gh
     nodejs_21
-    xwaylandvideobridge 
     logseq
     inetutils
     exiftool
-    geteltorito
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
-    ddrescue
     floorp
   ];
 
@@ -114,7 +102,7 @@ in {
   };
 
   home.file."rc.conf" = {
-    source = ./modules/ranger/rc.conf;
+    source = ../modules/ranger/rc.conf;
     target = ".config/ranger/rc.conf";
   };
   # Let Home Manager install and manage itself.

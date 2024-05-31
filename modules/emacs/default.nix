@@ -1,6 +1,6 @@
-{ pkgs, config, ... }: let
+{ pkgs, NIXCONFIG, username, ... }: let
 
-  emacsPath = "${config.home.sessionVariables.NIXCONFIG}/modules/emacs";
+  emacsPath = "${NIXCONFIG}/modules/emacs";
     
 in {
 
@@ -15,7 +15,7 @@ in {
       ${builtins.readFile ./config.el}
       (setq dashboard-startup-banner "${emacsPath}/ouran.png")
     ''; 
-
+    
     extraPackages = epkgs: with epkgs; [ 
       evil
       evil-collection
@@ -54,11 +54,11 @@ in {
       marginalia
       orderless
       catppuccin-theme
-      all-the-icons
+      nerd-icons
       arduino-mode
     ];
   };
-
+  
   services.emacs = {
     enable = true;
     startWithUserSession = "graphical"; # This allows emacsclient to use the configuration from programs.emacs

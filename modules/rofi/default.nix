@@ -1,4 +1,4 @@
-{config, ...}:
+{ username, ... }:
 {
   imports = [
     ./theme.rasi.nix
