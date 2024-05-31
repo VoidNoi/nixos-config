@@ -23,7 +23,7 @@
         ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "clock" "tray" ];
+        modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "battery" "clock" "tray" ];
 
         "sway/window" = {
 	        max-length = 70;
@@ -54,6 +54,22 @@
 	        };
         };
 
+        "battery" = {
+		      states = {
+			      "good" = 95;
+			      "warning" = 30;
+			      "critical" = 15;
+		      };
+		      format = "{icon} {capacity}%";
+		      format-icons = [
+			      ""
+			      ""
+			      ""
+			      ""
+			      ""
+		      ];
+	      };
+          
 	      "pulseaudio" = {
           format = "{volume}% {icon} {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";

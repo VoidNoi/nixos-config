@@ -26,6 +26,7 @@
     #custom-spotify,
     #tray,
     #window,
+    #battery,
     #workspaces {
       font-family: Roboto;
       border-radius: 5px;
