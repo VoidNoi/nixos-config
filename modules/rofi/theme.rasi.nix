@@ -1,4 +1,4 @@
-{ config, username, ... }:
+{ config, ... }:
 {
 
   programs.rofi.theme = let

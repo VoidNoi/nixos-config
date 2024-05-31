@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./theme.rasi.nix
@@ -6,6 +6,7 @@
 
   programs.rofi = {
     enable = true;
+    package = pkgs.rofi-wayland;
     extraConfig = {
       modi = "run,drun,window";
       icon-theme = "Zafiro-icons-Dark";
@@ -21,6 +22,5 @@
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
     };
-
   };
 }
