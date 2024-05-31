@@ -11,7 +11,18 @@
     dejavu_fonts
     catppuccin-cursors
   ];
-
+ 
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11 = {
+      enable = true;
+      defaultCursor = "Catppuccin-Macchiato-Dark-Cursors";
+    };
+    name = "Catppuccin-Macchiato-Dark-Cursors";
+    size = 20;
+    package = pkgs.catppuccin-cursors.macchiatoDark;
+  };
+  
   gtk = {
     enable = true;
     iconTheme = {
