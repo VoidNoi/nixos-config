@@ -82,7 +82,7 @@ in {
     nix-prefetch-git
     yt-dlp
     gh
-    nodejs_21
+    nodejs_22
     logseq
     inetutils
     exiftool
