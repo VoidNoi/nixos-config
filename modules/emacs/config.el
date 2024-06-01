@@ -110,6 +110,7 @@
   	(setq dashboard-vertically-center-content t)
   	(setq dashboard-items '((recents   . 5)
   				(bookmarks . 5)
+				(agenda    . 5)
         			  	))
       
   	(setq dashboard-startupify-list '(dashboard-insert-banner

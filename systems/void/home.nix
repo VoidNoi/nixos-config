@@ -15,5 +15,7 @@
     geteltorito
     ddrescue
     floorp
+    lutris
+    wineWowPackages.waylandFull
   ];
 }

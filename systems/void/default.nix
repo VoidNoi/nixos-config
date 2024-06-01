@@ -4,8 +4,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #../../modules/nix-ld/default.nix
-      #inputs.home-manager.nixosModules.default
     ];
 
   # Bootloader.
@@ -14,53 +12,6 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
   boot.kernelModules = ["v4l2loopback"];
  
-  #networking.hostName = "void"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Enable networking
-  #networking.networkmanager.enable = true;
-  #networking.nameservers = [ "192.168.1.145" "1.1.1.1" ];
-  #services.rpcbind.enable = true;
-  #systemd.mounts = [{
-  #  type = "nfs";
-  #  mountConfig = {
-  #    Options = "noatime";
-  #  };
-  #  what = "192.168.1.144:/mnt/Almacen";
-  #  where = "/mnt/Almacen";
-  #}];
-
-  #systemd.automounts = [{
-  #  wantedBy = [ "multi-user.target" ];
-  #  automountConfig = {
-  #    TimeoutIdleSec = "60";
-  #  };
-  #  where = "/mnt/Almacen";
-  #}];
-
-  ## Set your time zone.
-  #time.timeZone = "Europe/Madrid";
-
-  ## Select internationalisation properties.
-  #i18n.defaultLocale = "es_ES.UTF-8";
-
-  #i18n.extraLocaleSettings = {
-  #  LC_ADDRESS = "es_ES.UTF-8";
-  #  LC_IDENTIFICATION = "es_ES.UTF-8";
-  #  LC_MEASUREMENT = "es_ES.UTF-8";
-  #  LC_MONETARY = "es_ES.UTF-8";
-  #  LC_NAME = "es_ES.UTF-8";
-  #  LC_NUMERIC = "es_ES.UTF-8";
-  #  LC_PAPER = "es_ES.UTF-8";
-  #  LC_TELEPHONE = "es_ES.UTF-8";
-  #  LC_TIME = "es_ES.UTF-8";
-  #};
-
-  ## Configure console keymap
-  #console.keyMap = "es";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.noi = {
     isNormalUser = true;
@@ -80,37 +31,12 @@
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
-  # Allow unfree packages
-  #nixpkgs.config.allowUnfree = true;
   services = {
-    #gvfs.enable = true;
-    #tumbler.enable = true;
-    #picom.enable = true;
-    #openssh.enable = true;
     printing = {
       enable = true;
       drivers = with pkgs; [ hplip ];
     };
 
-    #pipewire = {
-    #  enable = true;
-    #  alsa.enable = true;
-    #  alsa.support32Bit = true;
-    #  pulse.enable = true;
-    #  jack.enable = true;
-    #  wireplumber.enable = true;
-    #};
-
-    #xserver = {
-    #  enable = true;
-    #  xkb.layout = "es";
-    #  xkb.variant = "";
-    #  displayManager.sddm = {
-    #    enable = true;
-    #    wayland.enable = true;
-    #    theme = "where_is_my_sddm_theme";
-    #  };
-    #}; 
     syncthing = {
       enable = true;
       user = "noi";
@@ -135,64 +61,24 @@
     };
   };
   
-  #sound.enable = true;
-  #security.rtkit.enable = true;
-
   programs = {
-    #thunar = {
+    #hyprland = {
     #  enable = true;
-    #  plugins = with pkgs.xfce; [
-    #    thunar-archive-plugin
-	  #    thunar-volman
-    #  ];
+    #  xwayland = {
+    #    enable = true;
+    #  };
+    #  portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    #  package = inputs.hyprland.packages."${pkgs.system}".hyprland; 
     #};
-
-    hyprland = {
-      enable = true;
-      xwayland = {
-        enable = true;
-      };
-      portalPackage = pkgs.xdg-desktop-portal-hyprland;
-      package = inputs.hyprland.packages."${pkgs.system}".hyprland; 
-    };
     
-    #zsh.enable = true;
-    
-    #adb.enable = true; # enable android proper data tethering
     system-config-printer.enable = true;
   };
 
   users.defaultUserShell = pkgs.zsh; 
 
   environment.systemPackages = with pkgs; [
-    #nfs-utils
-    #(where-is-my-sddm-theme.override {
-    #  themeConfig.General = {
-    #    background = toString ../../login-background.png;
-	  #backgroundMode = "fill";
-    #  };
-    #})
-    #(python3.withPackages (pkgs: with pkgs; [
-	  #  pyserial
-	  #  esptool
-	  #  deemix
-    #]))
     v4l-utils
-    #esptool
-    #firefox
-    #(wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
   ];
-
-  #xdg.portal = {
-  #  enable = true;
-  #  wlr.enable = false;
-  #  xdgOpenUsePortal = false;
-  #  extraPortals = with pkgs; [
-  #    #xdg-desktop-portal-wlr
-  #    xdg-desktop-portal-gtk
-  #  ];
-  #  config.common.default = "*";
-  #};
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
