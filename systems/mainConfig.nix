@@ -51,6 +51,16 @@
 
   # Configure console keymap
   console.keyMap = "es";
+
+  nix.optimise = {
+    automatic = true;
+    dates = [ "23:30" ]; # Optional; allows customizing optimisation schedule
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
   
   nixpkgs.config.allowUnfree = true;
   services = {
