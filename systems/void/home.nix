@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     telegram-desktop
     droidcam
+    gimp
+    tor-browser-bundle-bin
     transmission-gtk
     protontricks
     revanced-cli

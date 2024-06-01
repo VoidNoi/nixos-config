@@ -68,12 +68,10 @@ in {
     winetricks
     pavucontrol
     unzip
-    gimp
     p7zip
     mpv
     gnome.gnome-disk-utility
     unrar
-    tor-browser-bundle-bin
     killall
     onlyoffice-bin
     gnome.file-roller
