@@ -69,7 +69,7 @@
           inherit inputs;
         };
         modules = [
-          #./systems/bebop
+          ./systems/bebop
           ./systems/mainConfig.nix
           nur.nixosModules.nur
           ({ config, ... }: {
@@ -82,7 +82,7 @@
             home-manager.extraSpecialArgs = {
               username = "ed";
               monitors = {
-                LVDS1 = {
+                LVDS-1 = {
                   mode = "1600x900";
                   pos = "0 0";
                   bg = "${NIXCONFIG}/modules/sway/wallpaper.png fill";
@@ -90,7 +90,7 @@
               };
               inherit NIXCONFIG;
             };
-            home-manager.users.ed = import ./systems/homeConfig.nix;
+            home-manager.users.ed = import ./systems/bebop/home.nix;
           }
         ];
       };

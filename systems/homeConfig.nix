@@ -66,6 +66,7 @@ in {
     arduino-ide
     feh
     winetricks
+    pulseaudio
     pavucontrol
     unzip
     p7zip

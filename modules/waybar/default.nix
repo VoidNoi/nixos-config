@@ -20,6 +20,7 @@
         output = [
           "HDMI-A-1"
           "HDMI-A-2"
+          "LVDS-1"
         ];
         modules-left = [ "sway/workspaces" ];
         modules-center = [ "sway/window" ];
@@ -60,7 +61,7 @@
 			      "warning" = 30;
 			      "critical" = 15;
 		      };
-		      format = "{icon} {capacity}%";
+		      format = "{icon}  {capacity}%";
 		      format-icons = [
 			      ""
 			      ""

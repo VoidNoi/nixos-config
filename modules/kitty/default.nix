@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     kitty
-    neofetch
+    fastfetch
     w3m
     git
     vim
