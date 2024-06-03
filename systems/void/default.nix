@@ -78,15 +78,6 @@
     v4l-utils
   ];
 
-  environment.sessionVariables = {
-    XDG_SESSION_TYPE = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    CLUTTER_BACKEND = "wayland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-    QT_QPA_PLATFORM = "wayland;xcb";
-  };
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

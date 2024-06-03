@@ -110,6 +110,7 @@ in {
     extraConfig = ''
       seat * xcursor_theme Catppuccin-Macchiato-Dark-Cursors 20
       exec_always xrandr --output HDMI-A-2 --primary
+      exec systemctl --user import-environment
     '';
   };
 }

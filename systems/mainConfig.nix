@@ -143,6 +143,15 @@
     ];
     config.common.default = "*";
   };
+
+  environment.sessionVariables = {
+    XDG_SESSION_TYPE = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_DESKTOP = "sway";
+    QT_QPA_PLATFORM = "wayland;xcb";
+  };
   
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
