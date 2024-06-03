@@ -56,7 +56,6 @@ in {
       catppuccin-theme
       nerd-icons
       arduino-mode
-      hl-todo
     ];
   };
   
