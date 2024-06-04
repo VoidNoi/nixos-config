@@ -138,7 +138,32 @@
 ;; Auto-refresh dired on file change
 (add-hook 'dired-mode-hook 'auto-revert-mode)
 
+(use-package org)
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c C-l") 'org-insert-link)
+
 (setq org-agenda-files '("~/org"))
+(setq org-adapt-indentation t)
+
+(add-hook 'org-mode-hook 'visual-line-mode)
+
+(setq org-src-fontify-natively t)
+      
+(add-to-list 'org-src-block-faces (list "" (list :foreground (catppuccin-get-color 'green))))
+
+(defun ctp/text-org-blocks ()
+  (face-remap-add-relative 'org-block (list :foreground (catppuccin-get-color 'text))))
+(add-hook 'org-mode-hook 'ctp/text-org-blocks)
+
+(setq org-hide-emphasis-markers t)
+(font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+(use-package org-bullets
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 (defun org-todo-if-needed (state)
   "Change header state to STATE unless the current item is in STATE already."
   (unless (string-equal (org-get-todo-state) state)
@@ -153,6 +178,7 @@
                                "DONE")
                               (t
                                "DOING")))))
+
 (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
 
 (defun ct/org-summary-checkbox-cookie ()

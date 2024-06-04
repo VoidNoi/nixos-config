@@ -39,6 +39,7 @@ in {
       csharp-mode
       rust-mode
       rjsx-mode
+      nginx-mode
       general
       undo-tree
       which-key
@@ -56,6 +57,7 @@ in {
       catppuccin-theme
       nerd-icons
       arduino-mode
+      org-bullets
     ];
   };
   
