@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     kitty
-    fastfetch
     w3m
     git
     vim

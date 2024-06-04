@@ -32,6 +32,7 @@ in {
       
       startup = [
         {command = "dunst &";}
+        {command = "swaymsg \"workspace 1\"";}
         {command = "logseq";}
       ];
 
