@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, hostname, username, ... }:
+{ config, inputs, pkgs, hostname, username, deviceName, devices, ... }:
 
 {
   imports =
@@ -86,11 +86,6 @@
       enable = true;
       xkb.layout = "es";
       xkb.variant = "";
-      #displayManager.sddm = {
-      #  enable = true;
-      #  wayland.enable = true;
-      #  theme = "where_is_my_sddm_theme";
-      #};
     };
     
     greetd = {
@@ -100,6 +95,25 @@
           command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
           user = username;
         };
+      };
+    };
+
+    syncthing = {
+      enable = true;
+      user = username;
+      configDir = "/home/${username}/.config/syncthing"; 
+      settings = {
+        devices = devices;
+	      folders = {
+	        "org" = {
+	          path = "/home/${username}/org";
+	          devices = [ "Pi" "Phone" deviceName ];
+	        };
+	        "scripts" = {
+	          path = "/home/${username}/scripts";
+	          devices = [ "Pi" "Phone" deviceName ];
+	        };
+	      };
       };
     };
   };
@@ -117,20 +131,12 @@
 
   environment.systemPackages = with pkgs; [
     nfs-utils
-    #(where-is-my-sddm-theme.override {
-    #  themeConfig.General = {
-    #    background = toString ../login-background.png;
-	  #    backgroundMode = "fill";
-    #  };
-    #})
     (python3.withPackages (pkgs: with pkgs; [
 	    pyserial
 	    esptool
 	    deemix
     ]))
     esptool
-    #firefox
-    #(wrapFirefox (pkgs.firefox-unwrapped.override { pipewireSupport = true;}) {})
   ];
 
   xdg.portal = {

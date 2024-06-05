@@ -27,6 +27,12 @@
         specialArgs = {
           hostname = "void";
           username = "noi";
+          deviceName = "Bebop";
+          devices = {
+            "Bebop" = { id = "NRJTKX3-XM6EU2N-MMZGCSL-LAKHWJ6-EDC3BKS-HL4MT5U-TGZMSGG-2E3FXQY"; };
+	          "Pi" = { id = "NRJTKX3-XM6EU2N-MMZGCSL-LAKHWJ6-EDC3BKS-HL4MT5U-TGZMSGG-2E3FXQY"; };
+	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
+          };
           inherit inputs;
         };
         modules = [
@@ -66,6 +72,12 @@
         specialArgs = {
           hostname = "bebop";
           username = "ed";
+          deviceName = "void";
+          devices = {
+            "Void" = { id = "KYNSLHY-UD4VK7V-DBEYRZN-5DHHLCK-J2MYS27-I4Q7DJE-NZ55XBV-BLZLEQX"; };
+	          "Pi" = { id = "NRJTKX3-XM6EU2N-MMZGCSL-LAKHWJ6-EDC3BKS-HL4MT5U-TGZMSGG-2E3FXQY"; };
+	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
+          };
           inherit inputs;
         };
         modules = [

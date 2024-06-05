@@ -35,28 +35,6 @@
       drivers = with pkgs; [ hplip ];
     };
 
-    syncthing = {
-      enable = true;
-      user = "noi";
-      #dataDir = "/home/noi/Default Folder";    # Default folder for new synced folders
-      configDir = "/home/noi/.config/syncthing"; 
-      settings = {
-        devices = {
-	        "Pi" = { id = "NRJTKX3-XM6EU2N-MMZGCSL-LAKHWJ6-EDC3BKS-HL4MT5U-TGZMSGG-2E3FXQY"; };
-	        "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
-	      };
-	      folders = {
-	        "org" = {
-	          path = "/home/noi/org";
-	          devices = [ "Pi" "Phone" ];
-	        };
-	        "scripts" = {
-	          path = "/home/noi/scripts";
-	          devices = [ "Pi" "Phone" ];
-	        };
-	      };
-      };
-    };
   };
   
   programs = {
