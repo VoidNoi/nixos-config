@@ -42,12 +42,12 @@
       configDir = "/home/noi/.config/syncthing"; 
       settings = {
         devices = {
-	        "Pi" = { id = "SIBON2Z-FYVVPAG-TQUG2JU-43BEVSV-ALKQL6W-5UKYAJ5-WO2PSCG-NVI22AM"; };
+	        "Pi" = { id = "NRJTKX3-XM6EU2N-MMZGCSL-LAKHWJ6-EDC3BKS-HL4MT5U-TGZMSGG-2E3FXQY"; };
 	        "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
 	      };
 	      folders = {
-	        "Obsidian Vault" = {
-	          path = "/home/noi/Obsidian Vault";
+	        "org" = {
+	          path = "/home/noi/org";
 	          devices = [ "Pi" "Phone" ];
 	        };
 	        "scripts" = {

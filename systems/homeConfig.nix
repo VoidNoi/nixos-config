@@ -85,7 +85,6 @@ in {
     yt-dlp
     gh
     nodejs_22
-    logseq
     inetutils
     exiftool
     xfce.thunar
