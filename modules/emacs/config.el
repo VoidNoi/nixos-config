@@ -4,6 +4,8 @@
 (scroll-bar-mode -1)
 (setq standard-indent 2)
 
+(disable-theme 'misterioso) ;; Disabling this theme because it interferes with the set theme
+
 ;;(set-frame-parameter nil 'alpha-background 95) ; For current frame
 ;;(add-to-list 'default-frame-alist '(alpha-background . 95))
 
@@ -37,7 +39,7 @@
   (add-hook 'css-mode-hook 'prettier-js-mode)
 )
 
-; Enable vertico
+;; Enable vertico
 (use-package vertico
   :init
   (vertico-mode)
@@ -69,7 +71,7 @@
   (condition-case nil (delete-window) (error (save-buffers-kill-terminal)))
 )
 
-; Set keybinds
+;; Set keybinds
 (evil-set-leader 'motion (kbd "SPC"))
 
 (evil-define-key 'normal 'global (kbd "<leader>ws") 'split-window-vertically)
@@ -87,47 +89,37 @@
 
 (load-theme 'catppuccin t)
 
-(use-package 'neotree
-  :init
-  (setq neo-window-fixed-size nil)
-  (setq neo-window-width 30)
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  :custom ;; Configuration needs to be on :custom or the dashboard won't display properly
+  (dashboard-items '((recents   . 5)
+  		     (bookmarks . 5)
+		     (agenda)
+        	     ))
+  (dashboard-icon-type 'nerd-icons)
+  (dashboard-set-heading-icons t)
+  (dashboard-set-file-icons t)     ;; display icons on both GUI and terminal
+  
+  (dashboard-banner-logo-title "We'll protect this planet. You and me.")
+  (dashboard-set-init-info t)
+  (dashboard-vertically-center-content t)
+  (dashboard-display-icons-p t)  ;; This makes sure the icons are displayed before the dashboard loads
+  (dashboard-center-content t)
+  (dashboard-week-agenda t)
+  (dashboard-startupify-list '(dashboard-insert-banner
+                                    dashboard-insert-newline
+                                    dashboard-insert-banner-title
+                                    dashboard-insert-newline
+                                    dashboard-insert-items
+         			    ))	
   )
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(setq neo-autorefresh t)
-
-(defun set-init-frame ()
-  (use-package nerd-icons)
-  (use-package dashboard
-  	:ensure t
-  	:init
-  	(dashboard-setup-startup-hook)
-  	:config
-        
-  	(setq dashboard-set-file-icons t)     ; display icons on both GUI and terminal
-  	(setq dashboard-icon-type 'nerd-icons)  ; use `nerd-icons' package
-      
-  	(setq dashboard-center-content t)
-  	(setq dashboard-vertically-center-content t)
-  	(setq dashboard-items '((recents   . 5)
-  				(bookmarks . 5)
-				(agenda    . 5)
-        			  	))
-      
-  	(setq dashboard-startupify-list '(dashboard-insert-banner
-                                  	  dashboard-insert-newline
-                                            dashboard-insert-banner-title
-                                            dashboard-insert-newline
-                                            dashboard-insert-items
-        				 	 ))
-   	(setq dashboard-banner-logo-title "We'll protect this planet. You and me.")
-  )
-)
-
-(add-hook 'server-after-make-frame-hook 'set-init-frame)
-
 (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
 
-; Changes the directory backup files are saved to
+(add-hook 'server-after-make-frame-hook 'revert-buffer) ;; Fixes agenda TODO not displaying properly in the dashboard on first frame
+
+;; Changes the directory backup files are saved to
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
 (setq delete-old-versions t
@@ -171,7 +163,7 @@
 
 (defun ct/org-summary-todo-cookie (n-done n-not-done)
   "Switch header state to DONE when all subentries are DONE, to TODO when none are DONE, and to DOING otherwise"
-  (let (org-log-done org-log-states)   ; turn off logging
+  (let (org-log-done org-log-states)   ;; turn off logging
     (org-todo-if-needed (cond ((= n-done 0)
                                "TODO")
                               ((= n-not-done 0)
@@ -204,7 +196,7 @@
                       (t
                        (org-todo-if-needed "DOING")))
               ;; [x/y] cookie support
-              (if (> (match-end 2) (match-beginning 2)) ; = if not empty
+              (if (> (match-end 2) (match-beginning 2)) ;; = if not empty
                   (cond ((equal (match-string 2) (match-string 3))
                          (org-todo-if-needed "DONE"))
                         ((or (equal (string-trim (match-string 2)) "")

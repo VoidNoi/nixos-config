@@ -32,8 +32,6 @@ in {
       
       startup = [
         {command = "dunst &";}
-        {command = "swaymsg \"workspace 1\"";}
-        {command = "emacsclient -c -a 'emacs'";}
       ];
 
       gaps = {

@@ -4,10 +4,6 @@
     
 in {
 
-  home.packages = [
-    pkgs.emacs-all-the-icons-fonts
-  ];
-
   programs.emacs = {
     enable = true;
     #package = pkgs.emacs29-pgtk; # Use this package if you want transparency to work
@@ -25,7 +21,6 @@ in {
       evil-surround
       lsp-mode
       markdown-mode
-      neotree
       multiple-cursors
       prettier-js
       nix-mode
