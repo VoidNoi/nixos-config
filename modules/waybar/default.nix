@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     cmus
     playerctl
+    emacs-all-the-icons-fonts
   ];
 
   programs.waybar = {
