@@ -10,7 +10,7 @@ in {
     extraConfig = ''
       ${builtins.readFile ./config.el}
       (setq dashboard-startup-banner "${emacsPath}/ouran.png")
-    ''; 
+    '';
     
     extraPackages = epkgs: with epkgs; [ 
       evil
@@ -42,8 +42,15 @@ in {
       counsel
       use-package
       company
+      company-ctags
       company-quickhelp
       company-shell
+      company-web
+      company-lua
+      company-nixos-options
+      company-nginx
+      company-arduino
+      company-c-headers 
       vertico
       auto-complete
       dashboard
@@ -53,6 +60,7 @@ in {
       nerd-icons
       arduino-mode
       org-bullets
+      yasnippet
     ];
   };
   

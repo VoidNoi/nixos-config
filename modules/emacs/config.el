@@ -22,6 +22,11 @@
   (setq evil-collection-mode-list '(dashboard dired ibuffer))
   (evil-collection-init)
 )
+(use-package company
+  :ensure t
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-init-hook 'company-tng-mode))
 
 (use-package 'multiple-cursors
   :ensure t
@@ -206,3 +211,16 @@
                          (org-todo-if-needed "DOING")))
                 (org-todo-if-needed "DOING"))))))))
 (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
+
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/snippets"))
+  (yas-global-mode 1)
+  )
+
+(defun my/capitalize-first-char (&optional string)
+  "Capitalize only the first character of the input STRING."
+  (when (and string (> (length string) 0))
+    (let ((first-char (substring string nil 1))
+          (rest-str   (substring string 1)))
+      (concat (capitalize first-char) rest-str))))

@@ -113,6 +113,10 @@
 	          path = "/home/${username}/scripts";
 	          devices = [ "Pi" "Phone" deviceName ];
 	        };
+          "snippets" = {
+	          path = "/home/${username}/scripts";
+	          devices = [ "Pi" "Phone" deviceName ];
+          };
 	      };
       };
     };
