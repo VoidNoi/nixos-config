@@ -109,7 +109,8 @@ in {
     extraConfig = ''
       seat * xcursor_theme Catppuccin-Macchiato-Dark-Cursors 20
       exec_always xrandr --output HDMI-A-2 --primary
-      exec systemctl --user import-environment
+      exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+      exec dbus-update-activation-environment WAYLAND_DISPLAY
     '';
   };
 }

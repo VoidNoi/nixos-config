@@ -19,5 +19,6 @@
     floorp
     lutris
     wineWowPackages.waylandFull
+    prismlauncher
   ];
 }

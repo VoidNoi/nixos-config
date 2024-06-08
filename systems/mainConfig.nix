@@ -145,10 +145,10 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
-    xdgOpenUsePortal = false;
+    wlr.enable = true;
+    #xdgOpenUsePortal = false;
     extraPortals = with pkgs; [
-      #xdg-desktop-portal-wlr
+      xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
     ];
     config.common.default = "*";
@@ -156,11 +156,11 @@
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    CLUTTER_BACKEND = "wayland";
+    #SDL_VIDEODRIVER = "wayland";
+    #CLUTTER_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "sway";
-    XDG_SESSION_DESKTOP = "sway";
-    QT_QPA_PLATFORM = "wayland;xcb";
+    #XDG_SESSION_DESKTOP = "sway";
+    #QT_QPA_PLATFORM = "wayland;xcb";
   };
   
   # This value determines the NixOS release from which the default

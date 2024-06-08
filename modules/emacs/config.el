@@ -89,6 +89,8 @@
 (evil-define-key 'normal 'global (kbd "<leader>.") 'next-buffer)
 (evil-define-key 'normal 'global (kbd "<leader><left>") 'evil-window-left)
 (evil-define-key 'normal 'global (kbd "<leader><right>") 'evil-window-right)
+(evil-define-key 'normal 'global (kbd "<leader><down>") 'evil-window-down)
+(evil-define-key 'normal 'global (kbd "<leader><up>") 'evil-window-up)
 (evil-define-key 'normal 'global (kbd "<leader>op") 'neotree-toggle)
 (evil-define-key 'normal 'global (kbd "<leader>bb") 'bookmark-jump)
 
