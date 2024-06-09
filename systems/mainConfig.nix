@@ -114,7 +114,7 @@
 	          devices = [ "Pi" "Phone" deviceName ];
 	        };
           "snippets" = {
-	          path = "/home/${username}/scripts";
+	          path = "/home/${username}/snippets";
 	          devices = [ "Pi" "Phone" deviceName ];
           };
 	      };
