@@ -111,11 +111,15 @@
 	        };
 	        "scripts" = {
 	          path = "/home/${username}/scripts";
-	          devices = [ "Pi" "Phone" deviceName ];
+	          devices = [ "Pi" deviceName ];
 	        };
           "snippets" = {
 	          path = "/home/${username}/snippets";
-	          devices = [ "Pi" "Phone" deviceName ];
+	          devices = [ "Pi" deviceName ];
+          };
+          "code" = {
+	          path = "/home/${username}/Code";
+	          devices = [ "Pi" deviceName ];
           };
 	      };
       };
