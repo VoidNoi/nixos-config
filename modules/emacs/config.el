@@ -28,14 +28,6 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'after-init-hook 'company-tng-mode))
 
-(use-package 'multiple-cursors
-  :ensure t
-)
-
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
 (use-package 'prettier-js
   :after js2-mode
   :init
@@ -93,6 +85,14 @@
 (evil-define-key 'normal 'global (kbd "<leader><up>") 'evil-window-up)
 (evil-define-key 'normal 'global (kbd "<leader>op") 'neotree-toggle)
 (evil-define-key 'normal 'global (kbd "<leader>bb") 'bookmark-jump)
+
+(use-package evil-mc 
+  :ensure t
+  :config
+  (global-evil-mc-mode 1)
+)
+
+(evil-define-key 'normal 'global (kbd "C-c C-<") 'evil-mc-make-all-cursors)
 
 (load-theme 'catppuccin t)
 

@@ -75,7 +75,7 @@ in {
     gnome.gnome-disk-utility
     unrar
     killall
-    onlyoffice-bin
+    libreoffice
     gnome.file-roller
     syncthing
     lua
@@ -91,6 +91,7 @@ in {
     xfce.thunar-volman
     xfce.thunar-archive-plugin
     floorp
+    gnuplot
   ];
 
   home.sessionVariables = {

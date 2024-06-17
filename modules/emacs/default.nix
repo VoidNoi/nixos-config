@@ -19,9 +19,9 @@ in {
       evil-goggles
       evil-smartparens
       evil-surround
+      evil-mc
       lsp-mode
       markdown-mode
-      multiple-cursors
       prettier-js
       nix-mode
       yaml-mode
@@ -61,6 +61,7 @@ in {
       arduino-mode
       org-bullets
       yasnippet
+      gnuplot
     ];
   };
   
