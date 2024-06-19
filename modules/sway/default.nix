@@ -22,6 +22,11 @@ in {
         "type:keyboard" = {
           xkb_layout = "es";
         };
+        "type:touchpad" = {
+          dwt = "enabled";
+          tap = "enabled";
+          middle_emulation = "enabled";
+        };
       };
       
       output = monitors;
