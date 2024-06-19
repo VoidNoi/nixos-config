@@ -42,12 +42,19 @@
   (vertico-mode)
   :custom
   (vertico-sort-function 'vertico-sort-history-alpha)
-)
+  )
+;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
+(use-package arduino-cli-mode
+  :ensure t
+  :hook arduino-mode
+  :custom
+  (arduino-cli-default-port "/dev/ttyACM0")
+  )
 
 (use-package savehist
   :init
   (savehist-mode)
-)
+  )
 
 (use-package orderless
     :custom
@@ -55,18 +62,18 @@
     (completion-category-defaults nil)
     (completion-category-overrides
      '((file (styles partial-completion))))
-)
+    )
 
 (use-package marginalia
     :init
     (marginalia-mode)
-)
+    )
 
 (defun delete-window-or-kill-emacs ()
   "Delete the selected frame.  If the last one, kill Emacs."
   (interactive)
   (condition-case nil (delete-window) (error (save-buffers-kill-terminal)))
-)
+  )
 
 ;; Set keybinds
 (evil-set-leader 'motion (kbd "SPC"))
@@ -90,7 +97,7 @@
   :ensure t
   :config
   (global-evil-mc-mode 1)
-)
+  )
 
 (evil-define-key 'normal 'global (kbd "C-c C-<") 'evil-mc-make-all-cursors)
 
@@ -133,7 +140,7 @@
   kept-new-versions 6
   kept-old-versions 2
   version-control t
-)
+  )
 ;; Auto-refresh dired on file change
 (add-hook 'dired-mode-hook 'auto-revert-mode)
 

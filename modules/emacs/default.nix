@@ -59,6 +59,7 @@ in {
       catppuccin-theme
       nerd-icons
       arduino-mode
+      arduino-cli-mode
       org-bullets
       yasnippet
       gnuplot

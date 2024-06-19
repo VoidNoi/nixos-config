@@ -1,5 +1,6 @@
 { config, inputs, pkgs, hostname, username, deviceName, devices, ... }:
-
+let arduino-cli = pkgs.callPackage (import ../packages/arduino-cli) { };
+in
 {
   imports =
     [
@@ -145,6 +146,7 @@
 	    deemix
     ]))
     esptool
+    arduino-cli
   ];
 
   xdg.portal = {
