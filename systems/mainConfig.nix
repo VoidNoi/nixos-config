@@ -1,6 +1,4 @@
 { config, inputs, pkgs, hostname, username, deviceName, devices, ... }:
-let arduino-cli = pkgs.callPackage (import ../packages/arduino-cli) { };
-in
 {
   imports =
     [
@@ -150,7 +148,7 @@ in
 	    deemix
     ]))
     esptool
-    arduino-cli
+    arduino-cli #Version 1.0.0 doesn't compile with arduino-cli-mode
   ];
 
   xdg.portal = {
