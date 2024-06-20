@@ -122,6 +122,10 @@ in
 	          path = "/home/${username}/Code";
 	          devices = [ "Pi" deviceName ];
           };
+          "arduino" = {
+	          path = "/home/${username}/Arduino";
+	          devices = [ "Pi" deviceName ];
+          };
 	      };
       };
     };
