@@ -2,6 +2,7 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(setq-default indent-tabs-mode nil)
 (setq standard-indent 2)
 
 (disable-theme 'misterioso) ;; Disabling this theme because it interferes with the set theme

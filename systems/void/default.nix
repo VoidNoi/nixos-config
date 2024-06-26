@@ -3,19 +3,20 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./vfio/vfio.nix
     ];
 
   # Bootloader.
   boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
-  boot.kernelModules = ["v4l2loopback"];
+  boot.kernelModules = [ "v4l2loopback" "kvm-amd" "vfio-pci" ];
  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.noi = {
     isNormalUser = true;
     description = "noi";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "scanner" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "scanner" "lp" "libvirtd" ];
   };
-
+ 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
@@ -50,10 +51,31 @@
   };
 
   users.defaultUserShell = pkgs.zsh; 
-
   environment.systemPackages = with pkgs; [
+    virt-manager
     v4l-utils
+    virt-viewer
+    spice
+    spice-gtk
+    spice-vdagent
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
   ];
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
 
   programs.steam = {
     enable = true;
