@@ -5,6 +5,8 @@
 (setq-default indent-tabs-mode nil)
 (setq standard-indent 2)
 
+(setq org-archive-location "~/org/archive.org_archive::")
+
 (disable-theme 'misterioso) ;; Disabling this theme because it interferes with the set theme
 
 ;;(set-frame-parameter nil 'alpha-background 95) ; For current frame
