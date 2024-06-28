@@ -31,14 +31,6 @@
   (add-hook 'after-init-hook 'global-company-mode)
   (add-hook 'after-init-hook 'company-tng-mode))
 
-(use-package 'prettier-js
-  :after js2-mode
-  :init
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-  (add-hook 'css-mode-hook 'prettier-js-mode)
-)
-
 ;; Enable vertico
 (use-package vertico
   :init
@@ -79,22 +71,25 @@
   )
 
 ;; Set keybinds
-(evil-set-leader 'motion (kbd "SPC"))
 
-(evil-define-key 'normal 'global (kbd "<leader>ws") 'split-window-vertically)
-(evil-define-key 'normal 'global (kbd "<leader>wv") 'split-window-horizontally)
-(evil-define-key 'normal 'global (kbd "<leader>ww") 'other-window)
-(evil-define-key 'normal 'global (kbd "<leader>bu") 'ibuffer)
-(evil-define-key 'normal 'global (kbd "<leader>wq") 'delete-window-or-kill-emacs)
-(evil-define-key 'normal 'global (kbd "<leader>f") 'find-file)
-(evil-define-key 'normal 'global (kbd "<leader>,") 'previous-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>.") 'next-buffer)
-(evil-define-key 'normal 'global (kbd "<leader><left>") 'evil-window-left)
-(evil-define-key 'normal 'global (kbd "<leader><right>") 'evil-window-right)
-(evil-define-key 'normal 'global (kbd "<leader><down>") 'evil-window-down)
-(evil-define-key 'normal 'global (kbd "<leader><up>") 'evil-window-up)
-(evil-define-key 'normal 'global (kbd "<leader>op") 'neotree-toggle)
-(evil-define-key 'normal 'global (kbd "<leader>bb") 'bookmark-jump)
+(evil-define-key 'normal 'global
+  (kbd "SPC ws") 'split-window-vertically
+  (kbd "SPC wv") 'split-window-horizontally
+  (kbd "SPC ww") 'other-window
+  (kbd "SPC bu") 'ibuffer
+  (kbd "SPC wq") 'delete-window-or-kill-emacs
+  (kbd "SPC f") 'find-file
+  (kbd "SPC ,") 'previous-buffer
+  (kbd "SPC .") 'next-buffer
+  (kbd "SPC <left>") 'evil-window-left
+  (kbd "SPC <right>") 'evil-window-right
+  (kbd "SPC <down>") 'evil-window-down
+  (kbd "SPC <up>") 'evil-window-up
+  (kbd "SPC op") 'neotree-toggle
+  (kbd "SPC RET") 'bookmark-jump
+  (kbd "SPC r") 'recentf
+  (kbd "SPC oa") 'org-agenda
+  )
 
 (use-package evil-mc 
   :ensure t
@@ -106,33 +101,126 @@
 
 (load-theme 'catppuccin t)
 
+(defcustom dashboard-set-widget-binding t
+  "If non-nil show keybindings in shortmenu widgets."
+  :type 'boolean
+  :group 'dashboard)
+
+(defcustom dashboard-shortmenu-functions
+  `((recents   . recentf)
+    (bookmarks . bookmark-jump)
+    (agenda    . org-agenda))
+  "Functions to me used by shortmenu widgets.
+Possible values for list-type are: `recents', `bookmarks', `projects',
+`agenda' ,`registers'."
+  :type  '(alist :key-type symbol :value-type function)
+  :group 'dashboard)
+
+(defface dashboard-bindings-face
+  '((t (:inherit font-lock-constant-face)))
+  "Face used for shortmenu widgets bindings."
+  :group 'dashboard)
+
+(defun dashboard-insert-org-agenda-shortmenu (&rest _)
+  "Insert `org-agenda' shortmenu widget."
+  (let* ((fn (alist-get 'agenda dashboard-shortmenu-functions))
+         (fn-keymap (format "\\[%s]" fn))
+         (icon-name (alist-get 'agenda dashboard-heading-icons))
+         (icon (nerd-icons-octicon icon-name :face 'dashboard-heading :height 1.4)))
+    (if dashboard-display-icons-p
+        (insert (string-pad icon 2)))
+    (widget-create 'item
+                   :tag (format "%-30s" "Open org-agenda")
+                   :action (lambda (&rest _)
+                             (call-interactively 
+                              (alist-get 'agenda dashboard-shortmenu-functions)))
+                   :mouse-face 'highlight
+                   :button-face 'dashboard-heading
+                   :button-prefix ""
+                   :button-suffix ""
+                   :format "%[%t%]")
+    (if dashboard-set-widget-binding
+        (insert (propertize (substitute-command-keys fn-keymap)
+                            'face
+                            'dashboard-bindings-face)))))
+
+(defun dashboard-insert-bookmark-shortmenu (&rest _)
+  "Insert bookmark shortmenu widget."
+  (let* ((fn (alist-get 'bookmarks dashboard-shortmenu-functions))
+         (fn-keymap (format "\\[%s]" fn))
+         (icon-name (alist-get 'bookmarks dashboard-heading-icons))
+         (icon (nerd-icons-octicon icon-name :face 'dashboard-heading :height 1.4)))
+    (if dashboard-display-icons-p
+        (insert (string-pad icon 2)))
+    (widget-create 'item
+                   :tag (format "%-30s" "Jump to bookmark")
+                   :action (lambda (&rest _)
+                             (call-interactively 
+                              (alist-get 'bookmarks dashboard-shortmenu-functions)))
+                   :mouse-face 'highlight
+                   :button-face 'dashboard-heading
+                   :button-prefix ""
+                   :button-suffix ""
+                   :format "%[%t%]")
+    (if dashboard-set-widget-binding
+        (insert (propertize (substitute-command-keys fn-keymap)
+                            'face
+                            'dashboard-bindings-face)))))
+
+(defun dashboard-insert-recents-shortmenu (&rest _)
+  "Insert recent files short menu widget."
+  (let* ((fn (alist-get 'recents dashboard-shortmenu-functions))
+         (fn-keymap (format "\\[%s]" fn))
+         (icon-name (alist-get 'recents dashboard-heading-icons))
+         (icon (nerd-icons-octicon icon-name :face 'dashboard-heading :height 1.4)))
+    (if dashboard-display-icons-p
+        (insert (string-pad icon 2)))
+    (widget-create 'item
+                   :tag (format "%-30s" "Recently opened files")
+                   :action (lambda (&rest _)
+                             (call-interactively 
+                              (alist-get 'recents dashboard-shortmenu-functions)))
+                   :mouse-face 'highlight
+                   :button-face 'dashboard-heading
+                   :button-prefix ""
+                   :button-suffix ""
+                   :format "%[%t%]")
+    (if dashboard-set-widget-binding
+        (insert (propertize (substitute-command-keys fn-keymap)
+                            'face
+                            'dashboard-bindings-face)))))
+
 (use-package dashboard
   :ensure t
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
   :config
   (dashboard-setup-startup-hook)
   :custom ;; Configuration needs to be on :custom or the dashboard won't display properly
-  (dashboard-items '((recents   . 5)
-  		     (bookmarks . 5)
-		     (agenda)
-        	     ))
+  (dashboard-center-content t)
+  (dashboard-vertically-center-content t)
+  (dashboard-item-generators
+   '((recents   . dashboard-insert-recents-shortmenu)
+     (bookmarks . dashboard-insert-bookmark-shortmenu)
+     (agenda    . dashboard-insert-org-agenda-shortmenu)))
+  (dashboard-items '(recents bookmarks agenda))
+
   (dashboard-icon-type 'nerd-icons)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)     ;; display icons on both GUI and terminal
   
   (dashboard-banner-logo-title "We'll protect this planet. You and me.")
   (dashboard-set-init-info t)
-  (dashboard-vertically-center-content t)
   (dashboard-display-icons-p t)  ;; This makes sure the icons are displayed before the dashboard loads
-  (dashboard-center-content t)
   (dashboard-week-agenda t)
   (dashboard-startupify-list '(dashboard-insert-banner
                                     dashboard-insert-newline
                                     dashboard-insert-banner-title
                                     dashboard-insert-newline
                                     dashboard-insert-items
+                                    dashboard-insert-init-info
          			    ))	
   )
-(setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
 
 (add-hook 'server-after-make-frame-hook 'revert-buffer) ;; Fixes agenda TODO not displaying properly in the dashboard on first frame
 
