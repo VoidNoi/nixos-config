@@ -13,11 +13,12 @@
     #  url = "github:hyprwm/Hyprland";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, ... }: let 
+  outputs = inputs@{ self, nixpkgs, home-manager, nur, spicetify-nix, ... }: let 
   NIXCONFIG = "~/nixConfig";
   system = "x86_64-linux";
   in {
@@ -62,6 +63,7 @@
                 };
               };
               inherit NIXCONFIG;
+              inherit spicetify-nix;
             };
             home-manager.users.noi = import ./systems/void/home.nix;
           }
@@ -101,6 +103,7 @@
                 }; 
               };
               inherit NIXCONFIG;
+              inherit spicetify-nix;
             };
             home-manager.users.ed = import ./systems/bebop/home.nix;
           }

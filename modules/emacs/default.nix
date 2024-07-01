@@ -63,6 +63,7 @@ in {
       org-bullets
       yasnippet
       gnuplot
+      magit
     ];
   };
   

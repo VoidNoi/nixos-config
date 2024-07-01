@@ -1,3 +1,14 @@
+(let (;; temporarily increase `gc-cons-threshold' when loading to speed up startup.
+      (gc-cons-threshold most-positive-fixnum)
+      ;; Empty to avoid analyzing files when loading remote files.
+      (file-name-handler-alist nil))
+
+    ;; Emacs configuration file content is written below.
+;; Start scratch buffer in fundamental mode for optimization
+(setq initial-major-mode 'fundamental-mode)
+;;
+(setq frame-inhibit-implied-resize t)
+
 (add-to-list 'default-frame-alist '(undecorated . t))
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -9,8 +20,19 @@
 
 (disable-theme 'misterioso) ;; Disabling this theme because it interferes with the set theme
 
+(defadvice org-babel-execute-src-block (around load-language nil activate)
+  "Load language if needed"
+  (let ((language (org-element-property :language (org-element-at-point))))
+    (unless (cdr (assoc (intern language) org-babel-load-languages))
+      (add-to-list 'org-babel-load-languages (cons (intern language) t))
+      (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
+    ad-do-it))
+
 ;;(set-frame-parameter nil 'alpha-background 95) ; For current frame
 ;;(add-to-list 'default-frame-alist '(alpha-background . 95))
+
+;; Pregenerate agenda buffer when emacs is idle for more than 2 seconds
+(run-with-idle-timer 2 nil (lambda () (org-agenda-list) (delete-window)))
 
 (use-package evil
   :init
@@ -324,3 +346,4 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
     (let ((first-char (substring string nil 1))
           (rest-str   (substring string 1)))
       (concat (capitalize first-char) rest-str))))
+)

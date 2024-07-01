@@ -20,5 +20,6 @@
     lutris
     wineWowPackages.waylandFull
     prismlauncher
+    vesktop
   ];
 }

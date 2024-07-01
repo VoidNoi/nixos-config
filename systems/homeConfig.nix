@@ -14,7 +14,7 @@ in {
     ../modules/waybar
     ../modules/emacs
     ../modules/sway    
-    ../modules/fastfetch
+    ../modules/spicetify
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
@@ -92,6 +92,7 @@ in {
     xfce.thunar-archive-plugin
     floorp
     gnuplot
+    nitch
   ];
 
   home.sessionVariables = {
