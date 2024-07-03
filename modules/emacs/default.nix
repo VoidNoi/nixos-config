@@ -64,6 +64,8 @@ in {
       yasnippet
       gnuplot
       magit
+      elfeed
+      doom-modeline
     ];
   };
   

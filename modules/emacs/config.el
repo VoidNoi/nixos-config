@@ -18,6 +18,11 @@
 
 (setq org-archive-location "~/org/archive.org_archive::")
 
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  )
+
 (disable-theme 'misterioso) ;; Disabling this theme because it interferes with the set theme
 
 (defadvice org-babel-execute-src-block (around load-language nil activate)
@@ -111,6 +116,8 @@
   (kbd "SPC RET") 'bookmark-jump
   (kbd "SPC r") 'recentf
   (kbd "SPC oa") 'org-agenda
+  (kbd "SPC ot") 'org-todo-list
+  (kbd "SPC ol") 'org-open-at-point
   )
 
 (use-package evil-mc 
