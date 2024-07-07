@@ -18,6 +18,9 @@
 
 (setq org-archive-location "~/org/archive.org_archive::")
 
+(add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
+;;(set-frame-font "FiraCode Nerd Font mono 10" nil t)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)

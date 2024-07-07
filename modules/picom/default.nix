@@ -6,7 +6,7 @@
   ];
 
   services.picom = {
-    enable = true;
+    enable = false;
     shadow = true;
     fade = true;
     inactiveOpacity = 1;
@@ -20,16 +20,16 @@
       frame-opacity = 0.9;
       inactive-opacity-override = false;
       corder-radius = 15;
-      rounded-corners-exclude = [
-        "window_type = 'dock'"
-	"window_type = 'desktop'"
-      ];
-      blur-kern = "3x3box";
-      blur-background-exclude = [
-        "window-type = 'dock'"
-	"window-type = 'desktop'"
-	"_GTK_FRAME_EXTENTS@:c"
-      ];
+#      rounded-corners-exclude = [
+#        "window_type = 'dock'"
+#	"window_type = 'desktop'"
+#      ];
+#      blur-kern = "3x3box";
+#      blur-background-exclude = [
+#        "window-type = 'dock'"
+#	"window-type = 'desktop'"
+#	"_GTK_FRAME_EXTENTS@:c"
+#      ];
       mark-wmwin-focused = true;
       mark-ovredir-focused = true;
       detect-rounded-corners = true;

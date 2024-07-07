@@ -6,7 +6,7 @@ in {
 
   imports = [ 
     ../modules/theme
-    ../modules/picom
+#    ../modules/picom
     ../modules/zsh
     ../modules/kitty
     ../modules/dunst

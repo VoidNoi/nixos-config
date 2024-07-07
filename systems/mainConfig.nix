@@ -66,10 +66,13 @@
   };
   
   nixpkgs.config.allowUnfree = true;
+
+  systemd.services.syncthing.after = [ "graphical.target" ];
+  
   services = {
     gvfs.enable = true;
     tumbler.enable = true;
-    picom.enable = true;
+    #picom.enable = true;
     openssh.enable = true;
     
     pipewire = {
