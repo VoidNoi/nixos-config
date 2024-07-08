@@ -6,7 +6,7 @@
     ;; Emacs configuration file content is written below.
 ;; Start scratch buffer in fundamental mode for optimization
 (setq initial-major-mode 'fundamental-mode)
-;;
+
 (setq frame-inhibit-implied-resize t)
 
 (add-to-list 'default-frame-alist '(undecorated . t))
@@ -19,7 +19,6 @@
 (setq org-archive-location "~/org/archive.org_archive::")
 
 (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
-;;(set-frame-font "FiraCode Nerd Font mono 10" nil t)
 
 (use-package doom-modeline
   :ensure t
@@ -289,9 +288,36 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(setq org-todo-keyword-faces
+      '(
+        ("NEXT" . "#a6da95")
+        ("WAIT" . "#8bd5ca")
+        ("HOLD" . "#c6a0f6")
+        ("IDEA" . "#b7bdf8")
+         ))
+
+(setq org-todo-keywords '(
+    (sequence
+     "TODO(t)" ; doing later
+     "NEXT(n)" ; doing now or soon
+     "|"
+     "DONE(d)" ; done
+     )
+    (sequence
+     "WAIT(w)" ; waiting for some external change (event)
+     "HOLD(h)" ; waiting for some internal change (of mind)
+     "IDEA(i)" ; maybe someday
+     "|"
+     "STOP(s@/!)" ; stopped waiting, decided not to work on it
+     ))
+)
+
 (use-package org-bullets
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :init
+  (setq org-bullets-bullet-list '("ᐁ" "†")))
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (defun org-todo-if-needed (state)
   "Change header state to STATE unless the current item is in STATE already."
