@@ -291,6 +291,7 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 
 (setq org-todo-keyword-faces
       '(
+        ("TODO" . "#ed8796")
         ("NEXT" . "#a6da95")
         ("WAIT" . "#8bd5ca")
         ("HOLD" . "#c6a0f6")
