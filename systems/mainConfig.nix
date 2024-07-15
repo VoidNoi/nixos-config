@@ -66,6 +66,7 @@
   };
   
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
   systemd.services.syncthing.after = [ "graphical-session.target" ];
   

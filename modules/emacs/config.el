@@ -129,6 +129,8 @@
   )
 
 (evil-define-key 'normal 'global (kbd "C-c C-<") 'evil-mc-make-all-cursors)
+(evil-define-key 'normal 'global (kbd "C->") 'evil-mc-make-and-goto-next-match)
+(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
 
 (load-theme 'catppuccin t)
 
