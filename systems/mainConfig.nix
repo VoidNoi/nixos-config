@@ -67,7 +67,7 @@
   
   nixpkgs.config.allowUnfree = true;
 
-  systemd.services.syncthing.after = [ "graphical.target" ];
+  systemd.services.syncthing.after = [ "graphical-session.target" ];
   
   services = {
     gvfs.enable = true;

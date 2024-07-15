@@ -77,7 +77,6 @@ in {
     killall
     libreoffice
     gnome.file-roller
-    syncthing
     lua
     imagemagick
     ani-cli

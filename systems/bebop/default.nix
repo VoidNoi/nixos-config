@@ -14,7 +14,7 @@
   users.users.ed = {
     isNormalUser = true;
     description = "ed";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout"];
     packages = with pkgs; [];
   };
 }
