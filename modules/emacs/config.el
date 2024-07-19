@@ -54,11 +54,86 @@
   (setq evil-collection-mode-list '(dashboard dired ibuffer))
   (evil-collection-init)
 )
-(use-package company
-  :ensure t
+
+(use-package orderless
+    :custom
+    (completion-styles '(orderless partial-completion basic))
+    (completion-category-defaults nil)
+    (completion-category-overrides
+     '((file (styles partial-completion))))
+    )
+
+(use-package corfu
+  :after orderless
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-auto-prefix 2)
+  (corfu-auto-delay 0.0)
+  (corfu-quit-at-boundary 'separator)
+  (corfu-echo-documentation 0.25)
+  (corfu-preview-current 'insert)
+  (corfu-preselect-first nil)
+  :bind (:map corfu-map
+              ("M-SPC" . corfu-insert-separator)
+              ("RET"   . nil)
+              ("TAB"   . corfu-next)
+              ("S-TAB" . corfu-previous)
+              ("S-<return>" . corfu-insert))
   :init
-  (add-hook 'after-init-hook 'global-company-mode)
-  (add-hook 'after-init-hook 'company-tng-mode))
+  (require 'bind-key)
+  (global-corfu-mode)
+  (corfu-history-mode)
+  :config
+  (add-hook 'eshell-mode-hook
+            (lambda() (setq-local corfu-quit-at-boundary t
+                                  corfu-quit-no-match t
+                                  corfu-auto nil)
+              (corfu-mode))))
+
+(use-package cape
+  ;; Bind prefix keymap providing all Cape commands under a mnemonic key.
+  ;; Press C-c p ? to for help.
+  :bind ("C-c p" . cape-prefix-map) ;; Alternative keys: M-p, M-+, ...
+  ;; Alternatively bind Cape commands individually.
+  ;; :bind (("C-c p d" . cape-dabbrev)
+  ;;        ("C-c p h" . cape-history)
+  ;;        ("C-c p f" . cape-file)
+  ;;        ...)
+  :init
+  (require 'bind-key)
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.  The order of the functions matters, the
+  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; completion functions takes precedence over the global list.
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  ;; (add-hook 'completion-at-point-functions #'cape-history)
+  ;; ...
+)
+
+(setq-local completion-at-point-functions
+  (mapcar #'cape-company-to-capf
+    (list #'company-arduino #'company-web)))
+
+(use-package company-arduino
+  :config
+  (setq company-arduino-home "~/.arduino15/packages/arduino")
+  (setq company-arduino-header "~/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/Arduino.h")
+  (setq company-arduino-includes-dirs '("~/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/" "~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/include/" "~/.arduino15/packages/arduino/hardware/avr/1.8.6/libraries/" "~/Arduino/libraries/"))
+  )
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(add-hook 'irony-mode-hook 'company-arduino-turn-on)
+
+;; Activate irony-mode on arduino-mode
+(add-hook 'arduino-mode-hook 'irony-mode)
 
 ;; Enable vertico
 (use-package vertico
@@ -79,14 +154,6 @@
   :init
   (savehist-mode)
   )
-
-(use-package orderless
-    :custom
-    (completion-styles '(orderless basic))
-    (completion-category-defaults nil)
-    (completion-category-overrides
-     '((file (styles partial-completion))))
-    )
 
 (use-package marginalia
     :init

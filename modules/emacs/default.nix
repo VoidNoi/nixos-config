@@ -35,22 +35,19 @@ in {
       rust-mode
       rjsx-mode
       nginx-mode
+      irony
       general
       undo-tree
       which-key
       ranger
       counsel
       use-package
-      company
-      company-ctags
-      company-quickhelp
-      company-shell
       company-web
-      company-lua
       company-nixos-options
       company-nginx
       company-arduino
       company-c-headers 
+      company-irony
       vertico
       auto-complete
       dashboard
@@ -66,6 +63,9 @@ in {
       magit
       elfeed
       doom-modeline
+      corfu
+      cape
+      yasnippet-capf
     ];
   };
   

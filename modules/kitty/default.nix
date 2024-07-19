@@ -10,7 +10,6 @@
     eza
     usbutils
     yarn
-    gcc
     (ranger.override { imagePreviewSupport = true; })
     ueberzug
   ];

@@ -92,6 +92,8 @@ in {
     floorp
     gnuplot
     nitch
+    arduino-language-server
+    clang_18
   ];
 
   home.sessionVariables = {
