@@ -61,6 +61,17 @@ in {
       #safe.directory = "/etc/nixos";
     };
   };
+
+  services.wlsunset = {
+    enable = true;
+    systemdTarget = "graphical-session.target";
+    #temperature = {
+    #  day = 5000;
+    #  night = 4000;
+    #};
+    sunrise = "07:00";
+    sunset = "21:00";
+  };
  
   home.packages = with pkgs; [
     neovim
