@@ -20,7 +20,6 @@ in {
       evil-smartparens
       evil-surround
       evil-mc
-      lsp-mode
       markdown-mode
       prettier-js
       nix-mode

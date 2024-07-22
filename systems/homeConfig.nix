@@ -103,7 +103,6 @@ in {
     floorp
     gnuplot
     nitch
-    arduino-language-server
     clang_18
   ];
 
