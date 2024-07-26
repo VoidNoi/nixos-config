@@ -70,7 +70,7 @@ in {
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
-        "${modifier}+w" = "exec floorp";
+        "${modifier}+w" = "exec firefox";
         "${modifier}+n" = "exec thunar";
         "${modifier}+d" = "exec rofi -show drun -show-icons";
         "${modifier}+Return" = "exec kitty";

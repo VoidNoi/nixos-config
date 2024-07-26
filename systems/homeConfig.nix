@@ -100,7 +100,7 @@ in {
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
-    floorp
+    firefox
     gnuplot
     nitch
     clang_18
