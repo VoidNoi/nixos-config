@@ -104,6 +104,14 @@
   (mapcar #'cape-company-to-capf
     (list #'company-arduino #'company-web)))
 
+;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
+(use-package arduino-cli-mode
+  :ensure t
+  :hook arduino-mode
+  :custom
+  (arduino-cli-default-port "/dev/ttyACM0")
+  )
+
 (use-package company-arduino
   :config
   (setq company-arduino-home "~/.arduino15/packages/arduino")
@@ -128,13 +136,6 @@
   (vertico-mode)
   :custom
   (vertico-sort-function 'vertico-sort-history-alpha)
-  )
-;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
-(use-package arduino-cli-mode
-  :ensure t
-  :hook arduino-mode
-  :custom
-  (arduino-cli-default-port "/dev/ttyACM0")
   )
 
 (use-package savehist
@@ -174,6 +175,7 @@
   (kbd "SPC oa") 'org-agenda
   (kbd "SPC ot") 'org-todo-list
   (kbd "SPC ol") 'org-open-at-point
+  (kbd "SPC gg") 'magit-status
   )
 
 (use-package evil-mc 
@@ -308,8 +310,6 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
                                     dashboard-insert-init-info
          			    ))	
   )
-
-(add-hook 'server-after-make-frame-hook 'revert-buffer) ;; Fixes agenda TODO not displaying properly in the dashboard on first frame
 
 ;; Changes the directory backup files are saved to
 (setq backup-directory-alist `(("." . "~/.saves")))
