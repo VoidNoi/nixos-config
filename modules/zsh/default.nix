@@ -54,8 +54,6 @@ in {
 
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
-      emacs = "emacsclient -t";
-      #emacs = "emacsclient -c -a 'emacs'";
     };
     initExtra = ''
       source ${./penguin-prompt.zsh-theme}
