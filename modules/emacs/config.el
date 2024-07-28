@@ -17,6 +17,7 @@
 (setq standard-indent 2)
 
 (setq org-archive-location "~/org/archive.org_archive::")
+(setq org-image-actual-width nil)
 
 (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
 
