@@ -178,9 +178,15 @@
   (kbd "SPC RET") 'bookmark-jump
   (kbd "SPC r") 'recentf
   (kbd "SPC oa") 'org-agenda
+  (kbd "SPC od") 'my:org-agenda-day
   (kbd "SPC ot") 'org-todo-list
   (kbd "SPC ol") 'org-open-at-point
   (kbd "SPC gg") 'magit-status
+  )
+;; Set keybinds for arduino-cli
+(evil-define-key 'normal arduino-cli-mode-map
+  (kbd "SPC au") 'arduino-cli-compile-and-upload
+  (kbd "SPC ac") 'arduino-cli-compile
   )
 
 (use-package evil-mc 
