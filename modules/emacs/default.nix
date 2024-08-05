@@ -34,7 +34,6 @@ in {
       rust-mode
       rjsx-mode
       nginx-mode
-      irony
       general
       undo-tree
       which-key
@@ -46,7 +45,6 @@ in {
       company-nginx
       company-arduino
       company-c-headers 
-      company-irony
       vertico
       auto-complete
       dashboard
