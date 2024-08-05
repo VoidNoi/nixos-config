@@ -155,6 +155,10 @@
   (condition-case nil (delete-window) (error (save-buffers-kill-terminal)))
   )
 
+(defun my:org-agenda-day ()
+   (interactive)
+   (org-agenda nil "d"))
+
 ;; Set keybinds
 
 (evil-define-key 'normal 'global
@@ -370,6 +374,62 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
      "STOP(s@/!)" ; stopped waiting, decided not to work on it
      ))
 )
+
+(org-super-agenda-mode)
+
+(set-face-attribute 'org-date nil :foreground (catppuccin-get-color 'subtext0) :weight 'normal :height 0.80)
+(set-face-attribute 'org-agenda-date nil :foreground (catppuccin-get-color 'mauve) :weight 'bold :height 1.25)
+(set-face-attribute 'org-agenda-date-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
+(set-face-attribute 'org-agenda-date-weekend-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
+(set-face-attribute 'org-super-agenda-header nil :foreground (catppuccin-get-color 'pink) :weight 'bold :height 1.05)
+
+(setq org-habit-toggle-habits t)
+(setq org-agenda-hide-tags-regexp ".*")
+
+(setq org-agenda-custom-commands
+      '(
+        ("d" "Daily Agenda"
+         (
+          (agenda ""
+                  (
+                   (org-agenda-span 1)
+                   ;;(org-deadline-warning-days 0)
+                   (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+                   (org-super-agenda-date-format "%A %-e %B %Y")
+                   (org-agenda-overriding-header "")
+                   )
+                  )
+          (alltodo "" ((org-agenda-block-separator nil)
+                       (org-agenda-overriding-header "")
+                       
+                       (org-super-agenda-groups
+                        '(;; Each group has an implicit boolean OR operator between its selectors.
+                          (:name "Important"
+                                 ;; Single arguments given alone
+                                 :priority "A")
+                          (:name "Next to do"
+                                 :todo "NEXT")
+                          (:name "Buy"
+                                 :tag "Buy")
+                          (:name "Projects"
+                                 :tag "Project")
+                          ;; Groups supply their own section names when none are given
+                          ;;(:todo ("WAIT" "HOLD") :order 8)  ; Set order of this section
+                          (:priority<= "B"
+                                       ;; Show this section after "Today" and "Important", because
+                                       ;; their order is unspecified, defaulting to 0. Sections
+                                       ;; are displayed lowest-number-first.
+                                       :order 1)
+                          ;; After the last group, the agenda will display items that didn't
+                          ;; match any of these groups, with the default order position of 99
+                          )
+                        )
+                       )
+                   )
+          )
+         )
+        )
+      )
 
 (use-package org-bullets
   :init
