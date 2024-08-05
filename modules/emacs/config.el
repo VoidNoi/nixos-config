@@ -120,16 +120,16 @@
   (setq company-arduino-includes-dirs '("~/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino/" "~/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/include/" "~/.arduino15/packages/arduino/hardware/avr/1.8.6/libraries/" "~/Arduino/libraries/"))
   )
 
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(add-hook 'irony-mode-hook 'company-arduino-turn-on)
+;;(add-hook 'c++-mode-hook 'irony-mode)
+;;(add-hook 'c-mode-hook 'irony-mode)
+;;(add-hook 'objc-mode-hook 'irony-mode)
+;;
+;;(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;;
+;;(add-hook 'irony-mode-hook 'company-arduino-turn-on)
 
 ;; Activate irony-mode on arduino-mode
-(add-hook 'arduino-mode-hook 'irony-mode)
+;;(add-hook 'arduino-mode-hook 'irony-mode)
 
 ;; Enable vertico
 (use-package vertico
