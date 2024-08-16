@@ -51,7 +51,8 @@ in {
       cp="cp -i";
       mv="mv -i";
       rm="rm -i";
-
+      emacs="emacsclient -nw";
+      
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
     };
