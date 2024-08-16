@@ -36,7 +36,7 @@ in
       ];
       windowrulev2 = [
         "stayfocused,class:(steam),title:'(^$)'"
-        "float,class:(floorp)$,title:^(Picture-in-Picture)$"
+        "float,class:(firefox)$,title:^(Picture-in-Picture)$"
 	      "float,class:(steam)$,title:^(Friends List)$"
 	      "float,class:(pavucontrol)$,title:^(Control de volumen)$"
 	      "float,class:(steam)$,title:^(Steam Settings)$"
