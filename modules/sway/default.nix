@@ -14,6 +14,7 @@ in {
     enable = true;
     checkConfig = false;
     config = rec {
+      defaultWorkspace = "workspace number 1";
       modifier = "Mod4";
       
       terminal = "kitty";
