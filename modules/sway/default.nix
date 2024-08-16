@@ -28,6 +28,39 @@ in {
           middle_emulation = "enabled";
         };
       };
+      floating.criteria = [
+        {
+          title = "Confirmar para reemplazar archivos";
+          class = "Thunar";
+        }
+        {
+          title = "Progreso de las operaciones de archivo";
+          class = "Thunar";
+        }
+        {
+          title = "Picture-in-Picture";
+        }
+        {
+          title = "Control de volumen";
+          class = "pavucontrol";
+        }
+        {
+          title = "Friends List";
+          class = "steam";
+        }
+        {
+          title = "Steam Settings";
+          class = "steam";
+        }
+        {
+          title = "Add Non-Steam Game";
+          class = "steam";
+        }
+        {
+          title = "Pick game to add";
+          class = "steam";
+        }
+      ];
       
       output = monitors;
         
