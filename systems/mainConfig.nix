@@ -68,7 +68,11 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = (pkg: true);
 
-  systemd.services.syncthing.after = [ "graphical-session.target" ];
+  systemd = {
+    services.syncthing-init.after = [ "graphical.target" ];
+    targets.network-online.wantedBy = pkgs.lib.mkForce []; # Normally ["multi-user.target"]
+    services.NetworkManager-wait-online.wantedBy = pkgs.lib.mkForce []; # Normally ["network-online.target"]
+  };
   
   services = {
     gvfs.enable = true;
