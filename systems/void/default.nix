@@ -3,7 +3,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./vfio/vfio.nix
+      #./vfio/vfio.nix
     ];
 
   # Bootloader.
@@ -55,13 +55,6 @@
     virt-manager
     v4l-utils
     virt-viewer
-    spice
-    spice-gtk
-    spice-vdagent
-    spice-protocol
-    win-virtio
-    win-spice
-    gnome.adwaita-icon-theme
   ];
 
   virtualisation = {
@@ -73,9 +66,7 @@
         ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
-    spiceUSBRedirection.enable = true;
   };
-  services.spice-vdagentd.enable = true;
 
   programs.steam = {
     enable = true;

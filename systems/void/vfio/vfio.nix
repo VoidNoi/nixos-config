@@ -21,7 +21,12 @@ in {
   #    runAsRoot = true;
   #  };
   #};
- 
+  
+  virtualisation = {
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
+  
   # Add binaries to path so that hooks can use it
   systemd.services.libvirtd = {
     path = let
@@ -70,6 +75,13 @@ in {
     #virt-manager
     #gnome3.dconf # needed for saving settings in virt-manager
     libguestfs # needed to virt-sparsify qcow2 files
+    spice
+    spice-gtk
+    spice-vdagent
+    spice-protocol
+    win-virtio
+    win-spice
+    gnome.adwaita-icon-theme
   ];
  
   #environment.etc = {
