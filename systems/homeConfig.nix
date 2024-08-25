@@ -97,9 +97,7 @@ in {
     nodejs_22
     inetutils
     exiftool
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
+    gnome.nautilus
     firefox
     gnuplot
     nitch

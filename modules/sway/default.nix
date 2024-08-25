@@ -32,11 +32,9 @@ in {
       floating.criteria = [
         {
           title = "Confirmar para reemplazar archivos";
-          class = "Thunar";
         }
         {
           title = "Progreso de las operaciones de archivo";
-          class = "Thunar";
         }
         {
           title = "Picture-in-Picture";
@@ -105,7 +103,7 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
         "${modifier}+w" = "exec firefox";
-        "${modifier}+n" = "exec thunar";
+        "${modifier}+n" = "exec nautilus";
         "${modifier}+d" = "exec rofi -show drun -show-icons";
         "${modifier}+Return" = "exec kitty";
         "${modifier}+Shift+p" = "exec grim -l 0 -g \"$(slurp)\"";
