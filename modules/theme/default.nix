@@ -16,9 +16,9 @@
     gtk.enable = true;
     x11 = {
       enable = true;
-      defaultCursor = "Catppuccin-Macchiato-Dark-Cursors";
+      defaultCursor = "catppuccin-macchiato-dark-cursors";
     };
-    name = "Catppuccin-Macchiato-Dark-Cursors";
+    name = "catppuccin-macchiato-dark-cursors";
     size = 20;
     package = pkgs.catppuccin-cursors.macchiatoDark;
   };
@@ -30,12 +30,12 @@
       package = pkgs.zafiro-icons;
     };
     cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark-Cursors";
+      name = "catppuccin-macchiato-dark-cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
       size = 20;
     };
     theme = {
-      name = "Catppuccin-Macchiato-Standard-Mauve-Dark";
+      name = "catppuccin-macchiato-mauve-standard";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
         size = "standard";

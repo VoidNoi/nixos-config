@@ -144,7 +144,7 @@ in {
       }; 
     };
     extraConfig = ''
-      seat * xcursor_theme Catppuccin-Macchiato-Dark-Cursors 20
+      seat * xcursor_theme catppuccin-macchiato-dark-cursors 20
       exec_always xrandr --output HDMI-A-2 --primary
       exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP BROWSER EDITOR PATH XCURSOR_PATH COLORTERM TERM TERMINAL
       exec dbus-update-activation-environment WAYLAND_DISPLAY
