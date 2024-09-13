@@ -13,8 +13,11 @@
     #  url = "github:hyprwm/Hyprland";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+      
     nur.url = "github:nix-community/NUR";
   };
 
