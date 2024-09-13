@@ -83,11 +83,11 @@ in {
     unzip
     p7zip
     mpv
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     unrar
     killall
     libreoffice
-    gnome.file-roller
+    file-roller
     lua
     imagemagick
     ani-cli
@@ -97,7 +97,7 @@ in {
     nodejs_22
     inetutils
     exiftool
-    gnome.nautilus
+    nautilus
     firefox
     gnuplot
     nitch

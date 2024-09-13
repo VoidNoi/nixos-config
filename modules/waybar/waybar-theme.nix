@@ -34,6 +34,7 @@
       padding: 0 10px;
       background-color: rgba(30, 30, 46, 0.8);
       margin: 0 2px;
+      color: #ffffff;
     }
 
     #workspaces {

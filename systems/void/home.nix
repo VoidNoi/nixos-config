@@ -8,7 +8,7 @@
     droidcam
     gimp
     tor-browser-bundle-bin
-    transmission-gtk
+    transmission_4-gtk
     protontricks
     revanced-cli
     element-desktop
@@ -16,7 +16,6 @@
     xwaylandvideobridge 
     geteltorito
     ddrescue
-    floorp
     lutris
     wineWowPackages.waylandFull
     prismlauncher

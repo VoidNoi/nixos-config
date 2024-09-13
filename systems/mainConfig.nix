@@ -17,14 +17,14 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "192.168.1.145" "1.1.1.1" ];
   services.rpcbind.enable = true;
-  systemd.mounts = [{
-    type = "nfs";
-    mountConfig = {
-      Options = "noatime";
-    };
-    what = "192.168.1.144:/mnt/Almacen";
-    where = "/mnt/Almacen";
-  }];
+#  systemd.mounts = [{
+#    type = "nfs";
+#    mountConfig = {
+#      Options = "noatime";
+#    };
+#    what = "192.168.1.144:/mnt/Almacen";
+#    where = "/mnt/Almacen";
+#  }];
 
   systemd.automounts = [{
     wantedBy = [ "multi-user.target" ];
@@ -137,7 +137,6 @@
     };
   };
   
-  sound.enable = true;
   security.rtkit.enable = true;
   security.polkit.enable = true;
 
