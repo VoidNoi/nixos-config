@@ -17,6 +17,7 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "192.168.1.145" "1.1.1.1" ];
   services.rpcbind.enable = true;
+
 #  systemd.mounts = [{
 #    type = "nfs";
 #    mountConfig = {
@@ -26,13 +27,13 @@
 #    where = "/mnt/Almacen";
 #  }];
 
-  systemd.automounts = [{
-    wantedBy = [ "multi-user.target" ];
-    automountConfig = {
-      TimeoutIdleSec = "60";
-    };
-    where = "/mnt/Almacen";
-  }];
+#  systemd.automounts = [{
+#    wantedBy = [ "multi-user.target" ];
+#    automountConfig = {
+#      TimeoutIdleSec = "60";
+#    };
+#    where = "/mnt/Almacen";
+#  }];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";

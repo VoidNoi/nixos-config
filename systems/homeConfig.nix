@@ -83,11 +83,11 @@ in {
     unzip
     p7zip
     mpv
-    gnome-disk-utility
+    gnome.gnome-disk-utility
     unrar
     killall
     libreoffice
-    file-roller
+    gnome.file-roller
     lua
     imagemagick
     ani-cli
@@ -97,11 +97,12 @@ in {
     nodejs_22
     inetutils
     exiftool
-    nautilus
+    gnome.nautilus
     firefox
     gnuplot
     nitch
     clang_18
+    ffmpeg
   ];
 
   home.sessionVariables = {
