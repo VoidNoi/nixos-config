@@ -56,6 +56,7 @@ in {
       arduino-cli-mode
       org-bullets
       org-super-agenda
+      org-ql
       yasnippet
       gnuplot
       magit
