@@ -18,6 +18,7 @@
 
 (setq org-archive-location "~/org/archive.org_archive::")
 (setq org-image-actual-width nil)
+(setq org-startup-folded 'nofold)
 
 (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
 
@@ -321,6 +322,9 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
   )
 ;; Auto-refresh dired on file change
 (add-hook 'dired-mode-hook 'auto-revert-mode)
+
+(add-to-list 'evil-motion-state-modes 'elfeed-search-mode)
+(add-to-list 'evil-motion-state-modes 'elfeed-show-mode)
 
 (use-package org)
 
