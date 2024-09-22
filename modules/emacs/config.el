@@ -172,6 +172,7 @@
   (kbd "SPC ot") 'org-todo-list
   (kbd "SPC ol") 'org-open-at-point
   (kbd "SPC gg") 'magit-status
+  (kbd "SPC af") 'org-ql-find-in-agenda
   )
 ;; Set keybinds for arduino-cli
 (evil-define-key 'normal arduino-cli-mode-map
