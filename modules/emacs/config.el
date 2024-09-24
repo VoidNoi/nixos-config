@@ -43,19 +43,152 @@
 ;; Pregenerate agenda buffer when emacs is idle for more than 2 seconds
 (run-with-idle-timer 2 nil (lambda () (org-agenda-list) (delete-window)))
 
-(use-package evil
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  (setq evil-vsplit-window-right t)
-  (setq evil-split-window-below t)
-  (evil-mode))
-(use-package evil-collection
-  :after evil
-  :config
-  (setq evil-collection-mode-list '(dashboard dired ibuffer))
-  (evil-collection-init)
-)
+(defun meow-setup ()
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+  (meow-motion-overwrite-define-key
+   '("j" . meow-next)
+   '("k" . meow-prev)
+   '("<escape>" . ignore))
+  (meow-leader-define-key
+   ;; SPC j/k will run the original command in MOTION state.
+   '("j" . "H-j")
+   '("k" . "H-k")
+   ;; Use SPC (0-9) for digit arguments.
+   '("1" . meow-digit-argument)
+   '("2" . meow-digit-argument)
+   '("3" . meow-digit-argument)
+   '("4" . meow-digit-argument)
+   '("5" . meow-digit-argument)
+   '("6" . meow-digit-argument)
+   '("7" . meow-digit-argument)
+   '("8" . meow-digit-argument)
+   '("9" . meow-digit-argument)
+   '("0" . meow-digit-argument)
+   '("/" . meow-keypad-describe-key)
+   '("?" . meow-cheatsheet))
+  (meow-normal-define-key
+   '("0" . meow-expand-0)
+   '("9" . meow-expand-9)
+   '("8" . meow-expand-8)
+   '("7" . meow-expand-7)
+   '("6" . meow-expand-6)
+   '("5" . meow-expand-5)
+   '("4" . meow-expand-4)
+   '("3" . meow-expand-3)
+   '("2" . meow-expand-2)
+   '("1" . meow-expand-1)
+   '("-" . negative-argument)
+   '(";" . meow-reverse)
+   '("," . meow-inner-of-thing)
+   '("." . meow-bounds-of-thing)
+   '("[" . meow-beginning-of-thing)
+   '("]" . meow-end-of-thing)
+   '("a" . meow-append)
+   '("A" . meow-open-below)
+   '("b" . meow-back-word)
+   '("B" . meow-back-symbol)
+   '("c" . meow-change)
+   '("d" . meow-delete)
+   '("D" . meow-backward-delete)
+   '("e" . meow-next-word)
+   '("E" . meow-next-symbol)
+   '("f" . meow-find)
+   '("g" . meow-cancel-selection)
+   '("G" . meow-grab)
+   '("h" . meow-left)
+   '("H" . meow-left-expand)
+   '("i" . meow-insert)
+   '("I" . meow-open-above)
+   '("j" . meow-next)
+   '("J" . meow-next-expand)
+   '("k" . meow-prev)
+   '("K" . meow-prev-expand)
+   '("l" . meow-right)
+   '("L" . meow-right-expand)
+   '("m" . meow-join)
+   '("n" . isearch-repeat-forward)
+   '("N" . isearch-repeat-backward)
+   '("o" . meow-block)
+   '("O" . meow-to-block)
+   '("p" . meow-yank)
+   '("q" . meow-quit)
+   '("Q" . meow-goto-line)
+   '("r" . meow-replace)
+   '("R" . meow-swap-grab)
+   '("s" . meow-kill)
+   '("t" . meow-till)
+   '("u" . meow-undo)
+   '("U" . meow-undo-in-selection)
+   '("v" . meow-visit)
+   '("w" . meow-mark-word)
+   '("W" . meow-mark-symbol)
+   '("x" . meow-line)
+   '("X" . meow-goto-line)
+   '("y" . meow-save)
+   '("Y" . meow-sync-grab)
+   '("z" . meow-pop-selection)
+   '("'" . repeat)
+   '("<escape>" . ignore)))
+
+;; Set keybinds for arduino-cli
+(with-eval-after-load 'arduino-cli-mode
+  (meow-define-keys
+      'leader
+    '("au" . arduino-cli-compile-and-upload)
+    '("ac" . arduino-cli-compile)
+    ))
+
+(use-package meow
+  :ensure t
+  :init (meow-global-mode 1)
+  :config (meow-setup)
+  )
+
+(global-set-key (kbd "C-M-g") 'magit-status)
+
+(meow-define-keys
+    'leader
+  '("ws" . split-window-vertically)
+  '("wv" . split-window-horizontally)
+  '("ww" . other-window)
+  '("bu" . ibuffer)
+  '("wq" . delete-window-or-kill-emacs)
+  '("f" . find-file)
+  '("," . previousbuffer)
+  '("." . nextbuffer)
+  '("<left>" . windmove-left)
+  '("<right>" . windmove-right)
+  '("<down>" . windmove-down)
+  '("<up>" . windmove-up)
+  '("op" . neotree-toggle)
+  '("RET" . bookmark-jump)
+  '("r" . recentf)
+  '("oa" . org-agenda)
+  '("od" . my:org-agenda-day)
+  '("ot" . org-todo-list)
+  '("ol" . org-open-at-point)
+  '("g" . magit-status)
+  '("af" . org-ql-find-in-agenda)
+  '("br" . query-replace)
+  '("au" . arduino-cli-compile-and-upload)
+  '("s" . isearch-forward)
+  '("ñ" . meow-comment)
+  )
+
+;;(use-package evil
+;;  :init
+;;  (setq evil-want-integration t)
+;;  (setq evil-want-keybinding nil)
+;;  (setq evil-vsplit-window-right t)
+;;  (setq evil-split-window-below t)
+;;  ;;(evil-mode)
+;;  )
+;;(use-package evil-collection
+;;  :after evil
+;;  :config
+;;  (setq evil-collection-mode-list '(dashboard dired ibuffer))
+;;  (evil-collection-init)
+;;)
 
 (use-package orderless
     :custom
@@ -151,44 +284,43 @@
 
 ;; Set keybinds
 
-(evil-define-key 'normal 'global
-  (kbd "SPC ws") 'split-window-vertically
-  (kbd "SPC wv") 'split-window-horizontally
-  (kbd "SPC ww") 'other-window
-  (kbd "SPC bu") 'ibuffer
-  (kbd "SPC wq") 'delete-window-or-kill-emacs
-  (kbd "SPC f") 'find-file
-  (kbd "SPC ,") 'previous-buffer
-  (kbd "SPC .") 'next-buffer
-  (kbd "SPC <left>") 'evil-window-left
-  (kbd "SPC <right>") 'evil-window-right
-  (kbd "SPC <down>") 'evil-window-down
-  (kbd "SPC <up>") 'evil-window-up
-  (kbd "SPC op") 'neotree-toggle
-  (kbd "SPC RET") 'bookmark-jump
-  (kbd "SPC r") 'recentf
-  (kbd "SPC oa") 'org-agenda
-  (kbd "SPC od") 'my:org-agenda-day
-  (kbd "SPC ot") 'org-todo-list
-  (kbd "SPC ol") 'org-open-at-point
-  (kbd "SPC gg") 'magit-status
-  (kbd "SPC af") 'org-ql-find-in-agenda
-  )
-;; Set keybinds for arduino-cli
-(evil-define-key 'normal arduino-cli-mode-map
-  (kbd "SPC au") 'arduino-cli-compile-and-upload
-  (kbd "SPC ac") 'arduino-cli-compile
-  )
+;;(evil-define-key 'normal 'global
+  ;;(kbd "SPC ws") 'split-window-vertically
+  ;;(kbd "SPC wv") 'split-window-horizontally
+  ;;(kbd "SPC ww") 'other-window
+  ;;(kbd "SPC bu") 'ibuffer
+  ;;(kbd "SPC wq") 'delete-window-or-kill-emacs
+  ;;(kbd "SPC f") 'find-file
+  ;;(kbd "SPC ,") 'previous-buffer
+  ;;(kbd "SPC .") 'next-buffer
+  ;;(kbd "SPC <left>") 'evil-window-left
+  ;;(kbd "SPC <right>") 'evil-window-right
+  ;;(kbd "SPC <down>") 'evil-window-down
+  ;;(kbd "SPC <up>") 'evil-window-up
+  ;;(kbd "SPC op") 'neotree-toggle
+  ;;(kbd "SPC RET") 'bookmark-jump
+  ;;(kbd "SPC r") 'recentf
+  ;;(kbd "SPC oa") 'org-agenda
+  ;;(kbd "SPC od") 'my:org-agenda-day
+  ;;(kbd "SPC ot") 'org-todo-list
+  ;;(kbd "SPC ol") 'org-open-at-point
+  ;;(kbd "SPC gg") 'magit-status
+  ;;(kbd "SPC af") 'org-ql-find-in-agenda
+  ;;)
+;;(evil-define-key 'normal arduino-cli-mode-map
+  ;;(kbd "SPC au") 'arduino-cli-compile-and-upload
+  ;;(kbd "SPC ac") 'arduino-cli-compile
+  ;;)
 
-(use-package evil-mc 
-  :ensure t
-  :config
-  (global-evil-mc-mode 1)
-  )
+;;(use-package evil-mc 
+;;  :ensure t
+;;  :config
+;;  (global-evil-mc-mode 1)
+;;  )
 
-(evil-define-key 'normal 'global (kbd "C-c C-<") 'evil-mc-make-all-cursors)
-(evil-define-key 'normal 'global (kbd "C->") 'evil-mc-make-and-goto-next-match)
-(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
+;;(evil-define-key 'normal 'global (kbd "C-c C-<") 'evil-mc-make-all-cursors)
+;;(evil-define-key 'normal 'global (kbd "C->") 'evil-mc-make-and-goto-next-match)
+;;(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
 
 (load-theme 'catppuccin t)
 
@@ -324,8 +456,8 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 ;; Auto-refresh dired on file change
 (add-hook 'dired-mode-hook 'auto-revert-mode)
 
-(add-to-list 'evil-motion-state-modes 'elfeed-search-mode)
-(add-to-list 'evil-motion-state-modes 'elfeed-show-mode)
+;;(add-to-list 'evil-motion-state-modes 'elfeed-search-mode)
+;;(add-to-list 'evil-motion-state-modes 'elfeed-show-mode)
 
 (use-package org)
 
