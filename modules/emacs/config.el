@@ -580,9 +580,7 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
     (org-todo-if-needed (cond ((= n-done 0)
                                "TODO")
                               ((= n-not-done 0)
-                               "DONE")
-                              (t
-                               "DOING")))))
+                               "DONE")))))
 
 (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
 
