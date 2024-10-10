@@ -66,6 +66,7 @@ in {
       cape
       yasnippet-capf
       meow
+      base16-theme
     ];
   };
   

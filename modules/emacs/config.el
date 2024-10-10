@@ -175,6 +175,14 @@
   '("ñ" . meow-comment)
   )
 
+(defadvice isearch-search (after isearch-no-fail activate)
+  (unless isearch-success
+    (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
+    (ad-activate 'isearch-search)
+    (isearch-repeat (if isearch-forward 'forward))
+    (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
+    (ad-activate 'isearch-search)))
+
 ;;(use-package evil
 ;;  :init
 ;;  (setq evil-want-integration t)
@@ -322,7 +330,11 @@
 ;;(evil-define-key 'normal 'global (kbd "C->") 'evil-mc-make-and-goto-next-match)
 ;;(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
 
-(load-theme 'catppuccin t)
+;;(load-theme 'catppuccin t)
+(use-package base16-theme
+ :ensure t
+ :config
+ (load-theme 'base16-rose-pine t))
 
 (defcustom dashboard-set-widget-binding t
   "If non-nil show keybindings in shortmenu widgets."
@@ -471,16 +483,43 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 
 (setq org-src-fontify-natively t)
       
-(add-to-list 'org-src-block-faces (list "" (list :foreground (catppuccin-get-color 'green))))
+;; (add-to-list 'org-src-block-faces (list "" (list :foreground "#42be65")))
 
-(defun ctp/text-org-blocks ()
-  (face-remap-add-relative 'org-block (list :foreground (catppuccin-get-color 'text))))
+;; (defun ctp/text-org-blocks ()
+;;   (face-remap-add-relative 'org-block (list :foreground "#ffffff")))
 (add-hook 'org-mode-hook 'ctp/text-org-blocks)
 
 (setq org-hide-emphasis-markers t)
 (font-lock-add-keywords 'org-mode
-                          '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+(defcustom height-title-1 1.3
+  "Header 1 font size."
+  :type 'number)
+
+(defcustom height-title-2 1.2
+  "Header 2 font size."
+  :type 'number)
+
+(defcustom height-title-3 1.2
+  "Header 3 font size."
+  :type 'number)
+
+(defcustom height-doc-title 1.44
+  "Documentation Title font size."
+  :type 'number)
+
+(custom-set-faces
+  '(org-level-1 ((t (:inherit bold :height 1.3 :foreground "#eb6f92"))))
+  '(org-level-2 ((t (:inherit bold :height 1.2 :foreground "#ebbcba"))))
+  '(org-level-3 ((t (:weight normal :height 1.2 :foreground "#f6c177"))))
+  '(org-level-4 ((t (:weight normal :foreground "#31748f"))))
+  '(org-level-5 ((t (:weight normal :foreground "#9ccfd8"))))
+  '(org-level-6 ((t (:weight normal :foreground "#c4a7e7"))))
+  '(org-level-7 ((t (:weight normal :foreground "#c4a7e7"))))
+  '(org-level-8 ((t (:weight normal :foreground "#ebbcba"))))
+)
 
 (setq org-todo-keyword-faces
       '(
@@ -509,11 +548,11 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 
 (org-super-agenda-mode)
 
-(set-face-attribute 'org-date nil :foreground (catppuccin-get-color 'subtext0) :weight 'normal :height 0.80)
-(set-face-attribute 'org-agenda-date nil :foreground (catppuccin-get-color 'mauve) :weight 'bold :height 1.25)
-(set-face-attribute 'org-agenda-date-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
-(set-face-attribute 'org-agenda-date-weekend-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
-(set-face-attribute 'org-super-agenda-header nil :foreground (catppuccin-get-color 'pink) :weight 'bold :height 1.05)
+(set-face-attribute 'org-date nil :foreground "#dde1e6" :weight 'normal :height 0.80)
+(set-face-attribute 'org-agenda-date nil :foreground "#be95ff" :weight 'bold :height 1.25)
+(set-face-attribute 'org-agenda-date-today nil :foreground "#be95ff" :height 1.25)
+(set-face-attribute 'org-agenda-date-weekend-today nil :foreground "#be95ff" :height 1.25)
+(set-face-attribute 'org-super-agenda-header nil :foreground "#ff7eb6" :weight 'bold :height 1.05)
 
 (setq org-habit-toggle-habits t)
 (setq org-agenda-hide-tags-regexp ".*")
@@ -536,6 +575,12 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
                        
                        (org-super-agenda-groups
                         '(;; Each group has an implicit boolean OR operator between its selectors.
+                          (:discard (:and (:scheduled t
+                            :todo "DONE"
+                         )))
+                          (:name "Done today"
+                                 :log closed
+                                 :order 4)
                           (:name "Important"
                                  ;; Single arguments given alone
                                  :priority "A")
