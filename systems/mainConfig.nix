@@ -15,7 +15,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "192.168.1.145" "1.1.1.1" ];
+  networking.nameservers = [ "45.148.31.10" "9.9.9.9" ];
   services.rpcbind.enable = true;
 
 #  systemd.mounts = [{
