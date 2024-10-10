@@ -103,6 +103,7 @@ in {
     nitch
     clang_18
     ffmpeg
+    nextcloud-client
   ];
 
   home.sessionVariables = {
