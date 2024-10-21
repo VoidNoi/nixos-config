@@ -35,6 +35,7 @@
           devices = {
             "Bebop" = { id = "TFQD2FE-DKNMTQY-3KI2D4U-3XAALVL-GPNKQ7P-77AW5IG-5TONBDS-P7LZAQ7"; };
 	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
+         	  "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
           inherit inputs;
         };
@@ -80,6 +81,7 @@
           devices = {
             "Void" = { id = "KYNSLHY-UD4VK7V-DBEYRZN-5DHHLCK-J2MYS27-I4Q7DJE-NZ55XBV-BLZLEQX"; };
 	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
+	          "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
           inherit inputs;
         };
