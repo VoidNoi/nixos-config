@@ -14,7 +14,7 @@ in {
     ../modules/waybar
     ../modules/emacs
     ../modules/sway    
-    ../modules/spicetify
+    # ../modules/spicetify
   ];
   
   # Home Manager needs a bit of information about you and the paths it should
