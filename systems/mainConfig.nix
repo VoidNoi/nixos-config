@@ -115,29 +115,29 @@
 	      folders = {
 	        "org" = {
 	          path = "/home/${username}/org";
-	          devices = [ "Pi" "Phone" deviceName ];
+	          devices = [ "Phone" deviceName ];
 	        };
 	        "scripts" = {
 	          path = "/home/${username}/scripts";
-	          devices = [ "Pi" deviceName ];
+	          devices = [ deviceName ];
 	        };
           "snippets" = {
 	          path = "/home/${username}/snippets";
-	          devices = [ "Pi" deviceName ];
+	          devices = [ deviceName ];
           };
           "code" = {
 	          path = "/home/${username}/Code";
-	          devices = [ "Pi" deviceName ];
+	          devices = [ deviceName ];
           };
           "arduino" = {
 	          path = "/home/${username}/Arduino";
-	          devices = [ "Pi" deviceName ];
+	          devices = [ deviceName ];
           };
 	      };
       };
     };
   };
-  
+
   security.rtkit.enable = true;
   security.polkit.enable = true;
 
