@@ -51,7 +51,7 @@ in {
       cp="cp -i";
       mv="mv -i";
       rm="rm -i";
-      emacs="emacsclient -nw";
+      emacs="emacsclient -c -a 'emacs'";
       
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
@@ -67,7 +67,7 @@ in {
 
       export RMM_PATH="$HOME/Games/RimWorld"
       export PATH="$HOME/.config/emacs/bin:$PATH"
-      export EDITOR="emacsclient -t"
+      export EDITOR="emacsclient -c -a 'emacs'"
     '';
   };
 }

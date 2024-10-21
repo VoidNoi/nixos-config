@@ -107,7 +107,7 @@ in {
   ];
 
   home.sessionVariables = {
-    EDITOR = "emacs";
+    EDITOR = "emacsclient -c -a 'emacs'";
     BROWSER = "firefox";
     TERMINAL = "kitty";
     NIXCONFIG = "~/nixConfig";
