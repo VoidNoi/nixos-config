@@ -170,7 +170,6 @@
   '("g" . magit-status)
   '("af" . org-ql-find-in-agenda)
   '("br" . query-replace)
-  '("au" . arduino-cli-compile-and-upload)
   '("s" . isearch-forward)
   '("ñ" . meow-comment)
   )

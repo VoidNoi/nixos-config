@@ -115,23 +115,23 @@
 	      folders = {
 	        "org" = {
 	          path = "/home/${username}/org";
-	          devices = [ "Phone" deviceName ];
+	          devices = [ "Phone" deviceName "Server" ];
 	        };
 	        "scripts" = {
 	          path = "/home/${username}/scripts";
-	          devices = [ deviceName ];
+	          devices = [ deviceName "Server" ];
 	        };
           "snippets" = {
 	          path = "/home/${username}/snippets";
-	          devices = [ deviceName ];
+	          devices = [ deviceName "Server" ];
           };
           "code" = {
 	          path = "/home/${username}/Code";
-	          devices = [ deviceName ];
+	          devices = [ deviceName "Server" ];
           };
           "arduino" = {
 	          path = "/home/${username}/Arduino";
-	          devices = [ deviceName ];
+	          devices = [ deviceName "Server" ];
           };
 	      };
       };
