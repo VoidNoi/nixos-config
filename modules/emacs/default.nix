@@ -13,12 +13,12 @@ in {
     '';
     
     extraPackages = epkgs: with epkgs; [ 
-      # evil
-      # evil-collection
-      # evil-commentary
-      # evil-goggles
-      # evil-smartparens
-      # evil-surround
+      evil
+      evil-collection
+      evil-commentary
+      evil-goggles
+      evil-smartparens
+      evil-surround
       # evil-mc
       markdown-mode
       prettier-js
@@ -65,7 +65,7 @@ in {
       corfu
       cape
       yasnippet-capf
-      meow
+      # meow
       base16-theme
     ];
   };
