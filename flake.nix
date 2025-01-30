@@ -2,10 +2,10 @@
   description = "Nixos config flake";
   
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
@@ -17,8 +17,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-      
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };     
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nur, spicetify-nix, ... }: let 
@@ -42,9 +44,9 @@
         modules = [
           ./systems/void
           ./systems/mainConfig.nix
-          nur.nixosModules.nur
-          ({ config, ... }: {
-            environment.systemPackages = [ config.nur.repos.nltch.spotify-adblock ];
+          nur.modules.nixos.default
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
           })
 	        home-manager.nixosModules.home-manager
 	        {
@@ -88,9 +90,9 @@
         modules = [
           ./systems/bebop
           ./systems/mainConfig.nix
-          nur.nixosModules.nur
-          ({ config, ... }: {
-            environment.systemPackages = [ config.nur.repos.nltch.spotify-adblock ];
+          nur.modules.nixos.default
+          ({ pkgs, ... }: {
+            environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
           })
 	        home-manager.nixosModules.home-manager
 	        {

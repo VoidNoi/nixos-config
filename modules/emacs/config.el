@@ -248,7 +248,7 @@
 
 ;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
 (use-package arduino-cli-mode
-  :ensure t
+  :ensure nil
   :hook arduino-mode
   :custom
   (arduino-cli-default-port "/dev/ttyACM0")
