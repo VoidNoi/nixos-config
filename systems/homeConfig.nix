@@ -23,14 +23,14 @@ in {
   home.homeDirectory = "/home/${username}";
 
   xdg.desktopEntries = {
-    arduino-ide = {
-      name = "Arduino IDE";
-      exec = "arduino-ide %U";
-      icon = "arduino-ide";
-      terminal = false;
-      type = "Application";
-      comment = "Arduino IDE";
-    };
+    #arduino-ide = {
+      #name = "Arduino IDE";
+      #exec = "arduino-ide %U";
+      #icon = "arduino-ide";
+      #terminal = false;
+      #type = "Application";
+      #comment = "Arduino IDE";
+    #};
     cmus = {
       name = "Cmus";
       exec = "cmus";
@@ -103,6 +103,7 @@ in {
     nitch
     clang_18
     ffmpeg
+    appimage-run
   ];
 
   home.sessionVariables = {

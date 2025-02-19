@@ -107,6 +107,7 @@ in {
         "${modifier}+d" = "exec rofi -show drun -show-icons";
         "${modifier}+Return" = "exec kitty";
         "${modifier}+Shift+p" = "exec grim -l 0 -g \"$(slurp)\"";
+        "Print" = "exec grim";
         "${modifier}+c" = "kill";
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+r" = "restart";
