@@ -172,7 +172,7 @@
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-    SDL_VIDEODRIVER = "wayland";
+    #SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_DESKTOP = "sway";

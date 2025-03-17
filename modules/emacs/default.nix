@@ -10,6 +10,7 @@ in {
     extraConfig = ''
       ${builtins.readFile ./config.el}
       (setq dashboard-startup-banner "${emacsPath}/ouran.png")
+      (load-file "${emacsPath}/arduino-cli-mode.el")
     '';
     
     extraPackages = epkgs: with epkgs; [ 
@@ -53,7 +54,7 @@ in {
       catppuccin-theme
       nerd-icons
       arduino-mode
-      arduino-cli-mode
+      #arduino-cli-mode
       org-bullets
       org-super-agenda
       org-ql
@@ -67,6 +68,8 @@ in {
       yasnippet-capf
       # meow
       base16-theme
+      platformio-mode
+      ccls
     ];
   };
   

@@ -99,11 +99,14 @@ in {
     inetutils
     exiftool
     firefox
+    librewolf
     gnuplot
     nitch
     clang_18
     ffmpeg
     appimage-run
+    platformio
+    ccls
   ];
 
   home.sessionVariables = {

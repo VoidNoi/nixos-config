@@ -3,7 +3,6 @@
       ;; Empty to avoid analyzing files when loading remote files.
       (file-name-handler-alist nil))
 
-    ;; Emacs configuration file content is written below.
 ;; Start scratch buffer in fundamental mode for optimization
 (setq initial-major-mode 'fundamental-mode)
 
@@ -19,6 +18,8 @@
 (setq org-archive-location "~/org/archive.org_archive::")
 (setq org-image-actual-width nil)
 (setq org-startup-folded 'nofold)
+
+(setq global-auto-revert-mode t)
 
 (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
 
@@ -205,6 +206,8 @@
      '((file (styles partial-completion))))
     )
 
+(setq lsp-completion-provider :none)
+
 (use-package corfu
   :after orderless
   :custom
@@ -246,6 +249,8 @@
   (mapcar #'cape-company-to-capf
     (list #'company-arduino #'company-web)))
 
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 ;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
 (use-package arduino-cli-mode
   :ensure nil
@@ -253,6 +258,12 @@
   :custom
   (arduino-cli-default-port "/dev/ttyACM0")
   )
+(use-package platformio-mode
+  :ensure nil
+  )
+(add-hook 'c++-mode-hook (lambda ()
+                           (lsp-deferred)
+                           (platformio-conditionally-enable)))
 
 (use-package company-arduino
   :config
@@ -313,6 +324,13 @@
   (kbd "SPC gg") 'magit-status
   (kbd "SPC af") 'org-ql-find-in-agenda
   )
+
+(evil-define-key 'normal platformio-mode-map
+  (kbd "SPC au") 'platformio-upload
+  (kbd "SPC ac") 'platformio-build
+  )
+(add-to-list 'projectile-project-root-files "platformio.ini")
+
 (evil-define-key 'normal arduino-cli-mode-map
   (kbd "SPC au") 'arduino-cli-compile-and-upload
   (kbd "SPC ac") 'arduino-cli-compile
