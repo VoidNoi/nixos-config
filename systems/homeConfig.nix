@@ -106,7 +106,9 @@ in {
     ffmpeg
     appimage-run
     platformio
-    ccls
+#    ccls
+    yazi
+    udiskie
   ];
 
   home.sessionVariables = {
@@ -116,10 +118,6 @@ in {
     NIXCONFIG = "~/nixConfig";
   };
 
-  home.file."rc.conf" = {
-    source = ../modules/ranger/rc.conf;
-    target = ".config/ranger/rc.conf";
-  };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

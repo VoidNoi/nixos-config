@@ -103,7 +103,7 @@ in {
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
         "${modifier}+w" = "exec firefox";
-        "${modifier}+n" = "exec nautilus";
+        "${modifier}+n" = "exec kitty -e yazi";
         "${modifier}+d" = "exec rofi -show drun -show-icons";
         "${modifier}+Return" = "exec kitty";
         "${modifier}+Shift+p" = "exec grim -l 0 -g \"$(slurp)\"";
