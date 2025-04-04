@@ -236,6 +236,23 @@
                                   corfu-auto nil)
               (corfu-mode))))
 
+(use-package corfu-popupinfo
+  :after corfu
+  :ensure nil
+  :hook (corfu-mode . corfu-popupinfo-mode)
+  :custom
+  (corfu-popupinfo-delay '(0.25 . 0.1))
+  (corfu-popupinfo-hide nil)
+  :config
+  (corfu-popupinfo-mode))
+
+(use-package kind-icon
+  :if (display-graphic-p)
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
+
 (use-package cape
   :bind ("C-c p" . cape-prefix-map) ;; Alternative keys: M-p, M-+, ...
   :init
@@ -262,7 +279,6 @@
   :ensure nil
   )
 (add-hook 'c++-mode-hook (lambda ()
-                           (lsp-deferred)
                            (platformio-conditionally-enable)))
 
 (use-package company-arduino

@@ -69,7 +69,8 @@ in {
       # meow
       base16-theme
       platformio-mode
-      ccls
+#      ccls
+      kind-icon
     ];
   };
   
