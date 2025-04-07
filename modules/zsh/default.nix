@@ -52,6 +52,7 @@ in {
       mv="mv -i";
       rm="rm -i";
       emacs="emacsclient -c -a 'emacs'";
+      kicad="GTK_THEME=Arc-Darker kicad";
       
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
