@@ -107,9 +107,7 @@ in {
     appimage-run
     kicad
     platformio
-#    ccls
     yazi
-    udiskie
   ];
 
   home.sessionVariables = {

@@ -46,7 +46,7 @@
           ./systems/mainConfig.nix
           nur.modules.nixos.default
           ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
+            #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
           })
 	        home-manager.nixosModules.home-manager
 	        {
@@ -92,7 +92,7 @@
           ./systems/mainConfig.nix
           nur.modules.nixos.default
           ({ pkgs, ... }: {
-            environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
+            #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
           })
 	        home-manager.nixosModules.home-manager
 	        {
