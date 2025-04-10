@@ -20,5 +20,6 @@
     wineWowPackages.waylandFull
     prismlauncher
     vesktop
+    kicad
   ];
 }

@@ -105,7 +105,6 @@ in {
     clang_18
     ffmpeg
     appimage-run
-    kicad
     platformio
     yazi
   ];
