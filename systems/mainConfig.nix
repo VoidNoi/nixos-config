@@ -35,6 +35,8 @@
 #    where = "/mnt/Almacen";
 #  }];
 
+  services.mullvad-vpn.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
@@ -157,6 +159,7 @@
     ]))
     esptool
     arduino-cli #Version 1.0.0 doesn't compile with arduino-cli-mode
+    mullvad-vpn
   ];
 
   xdg.portal = {

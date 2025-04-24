@@ -98,6 +98,7 @@ in {
     inetutils
     exiftool
     librewolf
+    brave
     nitch
     clang_18
     ffmpeg
