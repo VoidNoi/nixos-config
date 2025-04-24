@@ -12,7 +12,6 @@
     protontricks
     revanced-cli
     element-desktop
-    nix-prefetch-git
     xwaylandvideobridge 
     geteltorito
     ddrescue
@@ -21,5 +20,6 @@
     prismlauncher
     vesktop
     kicad
+    ani-cli
   ];
 }

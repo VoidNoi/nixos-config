@@ -13,17 +13,19 @@
     #  url = "github:hyprwm/Hyprland";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #spicetify-nix = {
+      #url = "github:Gerg-L/spicetify-nix";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    #};
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };     
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nur, spicetify-nix, ... }: let 
+  outputs = inputs@{ self, nixpkgs, home-manager, nur,
+                     #spicetify-nix,
+                     ... }: let 
   NIXCONFIG = "~/nixConfig";
   system = "x86_64-linux";
   in {
@@ -45,9 +47,9 @@
           ./systems/void
           ./systems/mainConfig.nix
           nur.modules.nixos.default
-          ({ pkgs, ... }: {
+          #({ pkgs, ... }: {
             #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
-          })
+          #})
 	        home-manager.nixosModules.home-manager
 	        {
             home-manager.useGlobalPkgs = true;
@@ -68,7 +70,7 @@
                 };
               };
               inherit NIXCONFIG;
-              inherit spicetify-nix;
+              #inherit spicetify-nix;
             };
             home-manager.users.noi = import ./systems/void/home.nix;
           }
@@ -91,9 +93,9 @@
           ./systems/bebop
           ./systems/mainConfig.nix
           nur.modules.nixos.default
-          ({ pkgs, ... }: {
+          #({ pkgs, ... }: {
             #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
-          })
+          #})
 	        home-manager.nixosModules.home-manager
 	        {
             home-manager.useGlobalPkgs = true;
@@ -108,7 +110,7 @@
                 }; 
               };
               inherit NIXCONFIG;
-              inherit spicetify-nix;
+              #inherit spicetify-nix;
             };
             home-manager.users.ed = import ./systems/bebop/home.nix;
           }
