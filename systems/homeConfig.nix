@@ -97,7 +97,6 @@ in {
     nodejs_22
     inetutils
     exiftool
-    firefox
     librewolf
     nitch
     clang_18
@@ -109,7 +108,7 @@ in {
 
   home.sessionVariables = {
     EDITOR = "emacsclient -c -a 'emacs'";
-    BROWSER = "firefox";
+    BROWSER = "librewolf";
     TERMINAL = "kitty";
     NIXCONFIG = "~/nixConfig";
   };

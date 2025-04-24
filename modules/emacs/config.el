@@ -293,10 +293,13 @@
 
 (use-package emmet-mode
   :ensure t
-  :hook (web-mode . emmet-mode)
+  :hook ((web-mode css-mode rjsx-mode) . emmet-mode)
   :config
   (setq emmet-indent-after-insert nil
-        emmet-indentation 2))
+        emmet-indentation 2)
+  (add-to-list 'emmet-jsx-major-modes 'js-mode)
+  (add-to-list 'emmet-jsx-major-modes 'rjsx-mode)
+  )
 
 ;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
 (use-package arduino-cli-mode
