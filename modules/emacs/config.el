@@ -206,7 +206,20 @@
      '((file (styles partial-completion))))
     )
 
-(setq lsp-completion-provider :none)
+(use-package lsp-mode
+  :ensure t
+  :custom
+  (lsp-completion-provider :none) ;; we use Corfu!
+  (lsp-headerline-breadcrumb-enable nil)
+  :init
+  (defun my/lsp-mode-setup-completion ()
+    (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+          '(orderless)))
+  :hook ((( ;; and any other mode you want to hook into lsp
+          php-mode
+          web-mode) . lsp-deferred)
+         (lsp-completion-mode . my/lsp-mode-setup-completion)
+         ))
 
 (use-package corfu
   :after orderless
@@ -264,9 +277,26 @@
 
 (setq-local completion-at-point-functions
   (mapcar #'cape-company-to-capf
-    (list #'company-arduino #'company-web)))
+    (list #'company-arduino #'company-web #'company-php)))
 
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+(use-package web-mode
+  :ensure t
+  :mode "\\.html?\\'" 
+  :mode "\\.css\\'"
+  :mode "\\.php\\'"
+  :config
+  (setq web-mode-markup-indent-offser 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2))
+
+(use-package emmet-mode
+  :ensure t
+  :hook (web-mode . emmet-mode)
+  :config
+  (setq emmet-indent-after-insert nil
+        emmet-indentation 2))
 
 ;; set up arduino-cli | Requires arduino-cli and setting arduino-cli-default-fqbn for each project with add-dir-local-variable for arduino-mode
 (use-package arduino-cli-mode
@@ -696,6 +726,7 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
 
 (use-package yasnippet
+  :ensure t
   :config
   (setq yas-snippet-dirs '("~/snippets"))
   (yas-global-mode 1)

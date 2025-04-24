@@ -91,7 +91,6 @@ in {
     libreoffice
     lua
     imagemagick
-    ani-cli
     nix-prefetch-git
     yt-dlp
     gh
@@ -100,13 +99,12 @@ in {
     exiftool
     firefox
     librewolf
-    gnuplot
     nitch
     clang_18
     ffmpeg
-    appimage-run
     platformio
-    yazi
+    php
+    emmet-ls
   ];
 
   home.sessionVariables = {

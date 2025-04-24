@@ -29,6 +29,7 @@ in {
       json-mode
       yarn-mode
       web-mode
+      php-mode
       lua-mode
       python-mode
       csharp-mode
@@ -46,6 +47,7 @@ in {
       company-nginx
       company-arduino
       company-c-headers 
+      company-php
       vertico
       auto-complete
       dashboard
@@ -71,6 +73,9 @@ in {
       platformio-mode
 #      ccls
       kind-icon
+      lsp-mode
+      phpactor
+      emmet-mode
     ];
   };
   
