@@ -76,6 +76,8 @@ in {
       lsp-mode
       phpactor
       emmet-mode
+      vterm
+      vterm-toggle
     ];
   };
   
