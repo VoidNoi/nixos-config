@@ -10,8 +10,6 @@
     eza
     usbutils
     yarn
-    (ranger.override { imagePreviewSupport = true; })
-    ueberzug
   ];
 
   programs.kitty = {

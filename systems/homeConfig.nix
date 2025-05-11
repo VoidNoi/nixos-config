@@ -72,7 +72,7 @@ in {
     sunrise = "07:00";
     sunset = "21:00";
   };
- 
+  
   home.packages = with pkgs; [
     neovim
     arduino-ide
@@ -88,7 +88,6 @@ in {
     nautilus
     unrar
     killall
-    libreoffice
     lua
     imagemagick
     nix-prefetch-git
@@ -97,7 +96,7 @@ in {
     nodejs_22
     inetutils
     exiftool
-    librewolf
+    librewolf-bin
     brave
     nitch
     clang_18
@@ -105,6 +104,7 @@ in {
     platformio
     php
     emmet-ls
+    nur.repos.nltch.spotify-adblock
   ];
 
   home.sessionVariables = {

@@ -2,10 +2,11 @@
   description = "Nixos config flake";
   
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
@@ -23,12 +24,13 @@
     };     
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nur,
-                     #spicetify-nix,
-                     ... }: let 
-  NIXCONFIG = "~/nixConfig";
-  system = "x86_64-linux";
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, /*spicetify-nix,*/ ... }: let
+    
+    NIXCONFIG = "~/nixConfig";
+    system = "x86_64-linux";
+
   in {
+    
     nixosConfigurations = {
       void = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -41,15 +43,12 @@
 	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
          	  "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
+
           inherit inputs;
         };
         modules = [
           ./systems/void
           ./systems/mainConfig.nix
-          nur.modules.nixos.default
-          #({ pkgs, ... }: {
-            #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
-          #})
 	        home-manager.nixosModules.home-manager
 	        {
             home-manager.useGlobalPkgs = true;
@@ -70,6 +69,11 @@
                 };
               };
               inherit NIXCONFIG;
+
+              pkgs-stable = import nixpkgs-stable {
+                inherit system;
+                config.allowUnfree = true;
+              };
               #inherit spicetify-nix;
             };
             home-manager.users.noi = import ./systems/void/home.nix;
@@ -87,15 +91,17 @@
 	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
 	          "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
+
+          pkgs-stable = import nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+
           inherit inputs;
         };
         modules = [
           ./systems/bebop
           ./systems/mainConfig.nix
-          nur.modules.nixos.default
-          #({ pkgs, ... }: {
-            #environment.systemPackages = [ pkgs.nur.repos.nltch.spotify-adblock ];
-          #})
 	        home-manager.nixosModules.home-manager
 	        {
             home-manager.useGlobalPkgs = true;
@@ -110,6 +116,11 @@
                 }; 
               };
               inherit NIXCONFIG;
+
+              pkgs-stable = import nixpkgs-stable {
+                inherit system;
+                config.allowUnfree = true;
+              };
               #inherit spicetify-nix;
             };
             home-manager.users.ed = import ./systems/bebop/home.nix;

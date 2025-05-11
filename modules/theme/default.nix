@@ -7,7 +7,8 @@
     siji
     font-awesome
     unifont
-    nerdfonts
+    nerd-fonts.fira-code
+    nerd-fonts.symbols-only
     dejavu_fonts
     catppuccin-cursors
   ];

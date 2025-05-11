@@ -1,4 +1,4 @@
-{pkgs, ... }: {
+{pkgs, pkgs-stable, ... }: {
   imports = [
     ../homeConfig.nix
   ];
@@ -12,14 +12,14 @@
     protontricks
     revanced-cli
     element-desktop
-    xwaylandvideobridge 
+    kdePackages.xwaylandvideobridge 
     geteltorito
     ddrescue
-    lutris
-    wineWowPackages.waylandFull
+    pkgs-stable.lutris
     prismlauncher
     vesktop
-    kicad
+    kicad-small
     ani-cli
+    pkgs-stable.wineWowPackages.waylandFull
   ];
 }

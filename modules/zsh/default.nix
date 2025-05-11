@@ -57,7 +57,7 @@ in {
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
     };
-    initExtra = ''
+    initContent = ''
       source ${./penguin-prompt.zsh-theme}
 
       bindkey '^ ' autosuggest-accept
