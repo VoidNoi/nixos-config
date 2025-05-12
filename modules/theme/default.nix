@@ -8,6 +8,7 @@
     font-awesome
     unifont
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     dejavu_fonts
     catppuccin-cursors
