@@ -18,6 +18,9 @@
 (setq org-archive-location "~/org/archive.org_archive::")
 (setq org-image-actual-width nil)
 (setq org-startup-folded 'nofold)
+;;; Return or left-click with mouse follows link
+(customize-set-variable 'org-return-follows-link t)
+(customize-set-variable 'org-mouse-1-follows-link t)
 
 (setq global-auto-revert-mode t)
 

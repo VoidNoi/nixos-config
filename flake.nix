@@ -55,6 +55,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               username = "noi";
+              hostname = "void";
               monitors = {
                 HDMI-A-1 = {
                   mode = "1920x1080@60Hz";
@@ -108,6 +109,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               username = "ed";
+              hostname = "bebop";
               monitors = {
                 LVDS-1 = {
                   mode = "1600x900";

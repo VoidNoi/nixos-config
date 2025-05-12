@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, ...}: let
+{ pkgs, inputs, username, hostname, ...}: let
   history = 1000000;
 
 in {
@@ -56,6 +56,9 @@ in {
       
       pimaster="ssh pi@192.168.1.144";
       pinode="ssh pi@192.168.1.145";
+      restart="systemctl --user restart";
+      nixconf="cd ~/nixConfig/";
+      rebuild="sudo nixos-rebuild switch --flake \"$HOME/nixConfig/#${hostname}\"";
     };
     initContent = ''
       source ${./penguin-prompt.zsh-theme}
