@@ -395,7 +395,9 @@
 (use-package vterm
   :config
   (setq shell-file-name "/bin/sh"
-        vterm-max-scrollback 5000))
+        vterm-max-scrollback 5000)
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'vterm-mode 'insert)))
 
 
 (use-package vterm-toggle
@@ -641,9 +643,6 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
      "STOP(s@/!)" ; stopped waiting, decided not to work on it
      ))
       )
-
-(setq html-tag-face-alist
-      '(("h1" . default)))
 
 (org-super-agenda-mode)
 
