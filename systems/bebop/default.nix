@@ -10,6 +10,11 @@
       ./hardware-configuration.nix
     ];
 
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ed = {
     isNormalUser = true;

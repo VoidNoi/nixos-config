@@ -637,7 +637,10 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
      "|"
      "STOP(s@/!)" ; stopped waiting, decided not to work on it
      ))
-)
+      )
+
+(setq html-tag-face-alist
+      '(("h1" . default)))
 
 (org-super-agenda-mode)
 

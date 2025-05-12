@@ -78,6 +78,7 @@ in {
       emmet-mode
       vterm
       vterm-toggle
+      simple-httpd
     ];
   };
   
