@@ -105,6 +105,7 @@ in {
     php
     emmet-ls
     nur.repos.nltch.spotify-adblock
+    streamrip
   ];
 
   home.sessionVariables = {

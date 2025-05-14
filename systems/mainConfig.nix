@@ -159,7 +159,6 @@
     (python3.withPackages (pkgs: with pkgs; [
 	    pyserial
 	    esptool
-	    deemix
     ]))
     esptool
     arduino-cli #Version 1.0.0 doesn't compile with arduino-cli-mode
