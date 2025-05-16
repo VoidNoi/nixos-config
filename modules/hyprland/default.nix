@@ -1,4 +1,4 @@
-{ pkgs, inputs, NIXCONFIG, username, ... }: 
+{ pkgs, inputs, NIXCONFIG, ... }: 
 let
   inherit (inputs) hyprland;
   hyprlandPath = "${NIXCONFIG}/modules/hyprland";

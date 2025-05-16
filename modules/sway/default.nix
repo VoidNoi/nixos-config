@@ -1,4 +1,4 @@
-{ pkgs, NIXCONFIG, username, config, lib, monitors, ... }: let
+{ pkgs, NIXCONFIG, config, lib, monitors, ... }: let
   swayPath = "${NIXCONFIG}/modules/sway";
 in {
 

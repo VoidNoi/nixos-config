@@ -93,11 +93,6 @@
 	          "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
 
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
           inherit inputs;
         };
         modules = [

@@ -1,4 +1,4 @@
-{self, lib, config, username, pkgs, ... }: {
+{self, lib, config, pkgs, ... }: {
  
   home.packages = with pkgs; [
     noto-fonts

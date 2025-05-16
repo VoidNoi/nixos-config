@@ -1,4 +1,4 @@
-{ pkgs, NIXCONFIG, username, ... }: let
+{ pkgs, NIXCONFIG, ... }: let
 
   emacsPath = "${NIXCONFIG}/modules/emacs";
     
