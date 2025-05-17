@@ -58,6 +58,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-mine": {
+      "locked": {
+        "lastModified": 1747452698,
+        "narHash": "sha256-X1Y/I24PpX/9ZKfWAs9PYvZvNcAHEmzWz559CeUs1kY=",
+        "owner": "voidnoi",
+        "repo": "nixpkgs",
+        "rev": "ffc03b54012a969d838129b82982b524ef9a8134",
+        "type": "github"
+      },
+      "original": {
+        "owner": "voidnoi",
+        "ref": "serenityos-emoji-font",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1746810718,
@@ -100,6 +116,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-mine": "nixpkgs-mine",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur"
       }

@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, hostname, username, deviceName, devices, ... }:
+{ config, inputs, pkgs, pkgs-mine, hostname, username, deviceName, devices, ... }:
 {
   imports =
     [
@@ -165,6 +165,10 @@
     mullvad-vpn
   ];
 
+  fonts.packages = [
+    pkgs-mine.serenityos-emoji-font
+  ];
+  
   xdg.portal = {
     enable = true;
     wlr.enable = true;

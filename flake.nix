@@ -4,7 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
+    nixpkgs-mine.url = "github:voidnoi/nixpkgs/serenityos-emoji-font";
+    
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +25,7 @@
     };     
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, /*spicetify-nix,*/ ... }: let
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, nixpkgs-mine, home-manager, /*spicetify-nix,*/ ... }: let
     
     NIXCONFIG = "~/nixConfig";
     system = "x86_64-linux";
@@ -42,6 +43,11 @@
             "Bebop" = { id = "TFQD2FE-DKNMTQY-3KI2D4U-3XAALVL-GPNKQ7P-77AW5IG-5TONBDS-P7LZAQ7"; };
 	          "Phone" = { id = "6ZGQXN3-TC3EX7K-QLNF4GH-WOSQG7Z-DJF63QR-LOCCD5P-BS525FX-AO55RAB"; };
          	  "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
+          };
+
+          pkgs-mine = import nixpkgs-mine {
+            inherit system;
+            config.allowUnfree = true;
           };
 
           inherit inputs;
@@ -98,6 +104,7 @@
         modules = [
           ./systems/bebop
           ./systems/mainConfig.nix
+
 	        home-manager.nixosModules.home-manager
 	        {
             home-manager.useGlobalPkgs = true;
