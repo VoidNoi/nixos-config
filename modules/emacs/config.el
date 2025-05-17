@@ -26,6 +26,13 @@
 
 (add-to-list 'default-frame-alist '(font . "FiraCode Nerd Font mono 10"))
 
+(defun setup-emoji-fontset (frame)
+  (with-selected-frame frame
+    ;; Example: Set a font for all Unicode characters
+    (set-fontset-font t 'emoji "SerenityOS Emoji" nil 'prepend)))
+
+(add-hook 'after-make-frame-functions #'setup-emoji-fontset)
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1)
