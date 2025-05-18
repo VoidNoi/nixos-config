@@ -19,6 +19,7 @@
       dynamic_background_opacity = "yes";
       symbol_map = "U+1F427 SerenityOS Emoji";
     };
+    font.name = "Mononoki Nerd Font Mono";
     themeFile = "Catppuccin-Mocha";
   };
 }
