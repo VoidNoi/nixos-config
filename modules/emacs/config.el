@@ -435,11 +435,11 @@
 ;;(evil-define-key 'normal 'global (kbd "C->") 'evil-mc-make-and-goto-next-match)
 ;;(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
 
-;;(load-theme 'catppuccin t)
-(use-package base16-theme
- :ensure t
- :config
- (load-theme 'base16-rose-pine t))
+(load-theme 'catppuccin t)
+;;(use-package base16-theme
+ ;;:ensure t
+ ;;:config
+ ;;(load-theme 'base16-rose-pine t))
 
 (defcustom dashboard-set-widget-binding t
   "If non-nil show keybindings in shortmenu widgets."
