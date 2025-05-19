@@ -2,18 +2,18 @@
   description = "Nixos config flake";
   
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
     nixpkgs-mine.url = "github:voidnoi/nixpkgs/serenityos-emoji-font";
     
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     
     #hyprland = {
-    #  url = "github:hyprwm/Hyprland";
-    #  inputs.nixpkgs.follows = "nixpkgs";
+      #url = "github:hyprwm/Hyprland";
+      #inputs.nixpkgs.follows = "nixpkgs";
     #};
     #spicetify-nix = {
       #url = "github:Gerg-L/spicetify-nix";
@@ -25,10 +25,20 @@
     };     
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, nixpkgs-mine, home-manager, /*spicetify-nix,*/ ... }: let
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-mine, home-manager, /*spicetify-nix,*/ ... }: let
     
     NIXCONFIG = "~/nixConfig";
     system = "x86_64-linux";
+
+    pkgs-mine = import nixpkgs-mine {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+    pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
   in {
     
@@ -45,12 +55,7 @@
          	  "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
 
-          pkgs-mine = import nixpkgs-mine {
-            inherit system;
-            config.allowUnfree = true;
-          };
-
-          inherit inputs;
+          inherit inputs pkgs-mine;
         };
         modules = [
           ./systems/void
@@ -75,12 +80,8 @@
                   bg = "${NIXCONFIG}/modules/sway/wallpaper.png fill";
                 };
               };
-              inherit NIXCONFIG;
+              inherit NIXCONFIG pkgs-unstable;
 
-              pkgs-stable = import nixpkgs-stable {
-                inherit system;
-                config.allowUnfree = true;
-              };
               #inherit spicetify-nix;
             };
             home-manager.users.noi = import ./systems/void/home.nix;
@@ -99,7 +100,7 @@
 	          "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
 
-          inherit inputs;
+          inherit inputs pkgs-mine;
         };
         modules = [
           ./systems/bebop
@@ -119,12 +120,8 @@
                   bg = "${NIXCONFIG}/modules/sway/wallpaper.png fill";
                 }; 
               };
-              inherit NIXCONFIG;
+              inherit NIXCONFIG pkgs-unstable;
 
-              pkgs-stable = import nixpkgs-stable {
-                inherit system;
-                config.allowUnfree = true;
-              };
               #inherit spicetify-nix;
             };
             home-manager.users.ed = import ./systems/bebop/home.nix;

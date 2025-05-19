@@ -1,4 +1,4 @@
-{pkgs, pkgs-stable, ... }: {
+{pkgs, ... }: {
   imports = [
     ../homeConfig.nix
   ];
@@ -15,11 +15,11 @@
     kdePackages.xwaylandvideobridge 
     geteltorito
     ddrescue
-    pkgs-stable.lutris
+    lutris
     prismlauncher
     vesktop
     kicad-small
     ani-cli
-    pkgs-stable.wineWowPackages.waylandFull
+    wineWowPackages.waylandFull
   ];
 }
