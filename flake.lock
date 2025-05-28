@@ -60,11 +60,11 @@
     },
     "nixpkgs-mine": {
       "locked": {
-        "lastModified": 1747452698,
-        "narHash": "sha256-X1Y/I24PpX/9ZKfWAs9PYvZvNcAHEmzWz559CeUs1kY=",
+        "lastModified": 1748452233,
+        "narHash": "sha256-Gu6lyMnc8ZMuN8fPuok2if8AKe45+YGGkq2QpDmNw9g=",
         "owner": "voidnoi",
         "repo": "nixpkgs",
-        "rev": "ffc03b54012a969d838129b82982b524ef9a8134",
+        "rev": "63d96fd9055f6f612cce78f68c42f974ecb48bcb",
         "type": "github"
       },
       "original": {
