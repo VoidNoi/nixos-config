@@ -436,6 +436,7 @@
 ;;(evil-define-key 'normal 'global (kbd "C-<") 'evil-mc-make-and-goto-prev-match)
 
 (load-theme 'catppuccin t)
+
 ;;(use-package base16-theme
  ;;:ensure t
  ;;:config
@@ -588,11 +589,11 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 
 (setq org-src-fontify-natively t)
       
-;; (add-to-list 'org-src-block-faces (list "" (list :foreground "#42be65")))
+(add-to-list 'org-src-block-faces (list "" (list :foreground "#42be65")))
 
-;; (defun ctp/text-org-blocks ()
-;;   (face-remap-add-relative 'org-block (list :foreground "#ffffff")))
-;; (add-hook 'org-mode-hook 'ctp/text-org-blocks)
+(defun ctp/text-org-blocks ()
+  (face-remap-add-relative 'org-block (list :foreground "#ffffff")))
+(add-hook 'org-mode-hook 'ctp/text-org-blocks)
 
 (setq org-hide-emphasis-markers t)
 (font-lock-add-keywords 'org-mode
@@ -653,11 +654,19 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
 
 (org-super-agenda-mode)
 
-(set-face-attribute 'org-date nil :foreground "#dde1e6" :weight 'normal :height 0.80)
-(set-face-attribute 'org-agenda-date nil :foreground "#be95ff" :weight 'bold :height 1.25)
-(set-face-attribute 'org-agenda-date-today nil :foreground "#be95ff" :height 1.25)
-(set-face-attribute 'org-agenda-date-weekend-today nil :foreground "#be95ff" :height 1.25)
-(set-face-attribute 'org-super-agenda-header nil :foreground "#ff7eb6" :weight 'bold :height 1.05)
+;; Face attributes for catppuccin
+(set-face-attribute 'org-date nil :foreground (catppuccin-get-color 'subtext0) :weight 'normal :height 0.80)
+(set-face-attribute 'org-agenda-date nil :foreground (catppuccin-get-color 'mauve) :weight 'bold :height 1.25)
+(set-face-attribute 'org-agenda-date-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
+(set-face-attribute 'org-agenda-date-weekend-today nil :foreground (catppuccin-get-color 'mauve) :height 1.25)
+(set-face-attribute 'org-super-agenda-header nil :foreground (catppuccin-get-color 'pink) :weight 'bold :height 1.05)
+
+;; Face attributes for rose-pine
+;;(set-face-attribute 'org-date nil :foreground "#dde1e6" :weight 'normal :height 0.80)
+;;(set-face-attribute 'org-agenda-date nil :foreground "#be95ff" :weight 'bold :height 1.25)
+;;(set-face-attribute 'org-agenda-date-today nil :foreground "#be95ff" :height 1.25)
+;;(set-face-attribute 'org-agenda-date-weekend-today nil :foreground "#be95ff" :height 1.25)
+;;(set-face-attribute 'org-super-agenda-header nil :foreground "#ff7eb6" :weight 'bold :height 1.05)
 
 (setq org-habit-toggle-habits t)
 (setq org-agenda-hide-tags-regexp ".*")
