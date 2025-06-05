@@ -617,12 +617,12 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
   :type 'number)
 
 (custom-set-faces
-  '(org-level-1 ((t (:inherit bold :height 1.3 :foreground "#eb6f92"))))
-  '(org-level-2 ((t (:inherit bold :height 1.2 :foreground "#ebbcba"))))
-  '(org-level-3 ((t (:weight normal :height 1.2 :foreground "#f6c177"))))
-  '(org-level-4 ((t (:weight normal :foreground "#31748f"))))
-  '(org-level-5 ((t (:weight normal :foreground "#9ccfd8"))))
-  '(org-level-6 ((t (:weight normal :foreground "#c4a7e7"))))
+  '(org-level-1 ((t (:inherit bold :height 1.3 :foreground "#ed8796"))))
+  '(org-level-2 ((t (:inherit bold :height 1.2 :foreground "#f5a97f"))))
+  '(org-level-3 ((t (:weight normal :height 1.2 :foreground "#eed49f"))))
+  '(org-level-4 ((t (:weight normal :foreground "#a6da95"))))
+  '(org-level-5 ((t (:weight normal :foreground "#7dc4e4"))))
+  '(org-level-6 ((t (:weight normal :foreground "#b7bdf8"))))
   '(org-level-7 ((t (:weight normal :foreground "#c4a7e7"))))
   '(org-level-8 ((t (:weight normal :foreground "#ebbcba"))))
 )
