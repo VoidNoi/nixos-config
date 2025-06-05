@@ -60,11 +60,11 @@
     },
     "nixpkgs-mine": {
       "locked": {
-        "lastModified": 1748452233,
-        "narHash": "sha256-Gu6lyMnc8ZMuN8fPuok2if8AKe45+YGGkq2QpDmNw9g=",
+        "lastModified": 1748787403,
+        "narHash": "sha256-/+O08mdds11JhWZ6FA8j1SXiAqyEX/H2Znpy6KsC5RU=",
         "owner": "voidnoi",
         "repo": "nixpkgs",
-        "rev": "63d96fd9055f6f612cce78f68c42f974ecb48bcb",
+        "rev": "2b2bc277893ae87e2dde829944cfb4c82b84374e",
         "type": "github"
       },
       "original": {
@@ -74,27 +74,11 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1747742418,
-        "narHash": "sha256-AneVxa/SgAGG59JgR+DXuUcLuF8NlM5DtyrXUboGhSc=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "e3a5e6a22c19c68c55d2acacff401f125eeab755",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ],
         "treefmt-nix": "treefmt-nix"
       },
@@ -117,7 +101,6 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-mine": "nixpkgs-mine",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur"
       }
     },

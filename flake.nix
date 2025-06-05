@@ -22,7 +22,7 @@
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };     
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixpkgs-mine, home-manager, /*spicetify-nix,*/ ... }: let

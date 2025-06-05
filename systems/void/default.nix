@@ -34,7 +34,6 @@
       enable = true;
       drivers = with pkgs; [ hplip ];
     };
-
   };
   
   programs = {
