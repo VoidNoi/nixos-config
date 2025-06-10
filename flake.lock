@@ -74,11 +74,27 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1749564252,
+        "narHash": "sha256-JS4hjBnMZbcTMNSf3XLxtVprn53QN3HAc0SuAaaI8Ak=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "37a9c8af8f6b3e1236ff7ce25c636c2b8cd776b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ],
         "treefmt-nix": "treefmt-nix"
       },
@@ -101,6 +117,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-mine": "nixpkgs-mine",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur"
       }
     },
