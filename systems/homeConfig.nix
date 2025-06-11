@@ -110,7 +110,7 @@ in {
 
   home.sessionVariables = {
     EDITOR = "emacsclient -c -a 'emacs'";
-    BROWSER = "librewolf";
+    BROWSER = "brave";
     TERMINAL = "kitty";
     NIXCONFIG = "~/nixConfig";
   };
