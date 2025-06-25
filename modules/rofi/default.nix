@@ -1,14 +1,15 @@
 { pkgs, ... }:
 {
   imports = [
-    ./theme.rasi.nix
+    #./theme.rasi.nix
+    ./squared-material-lavender.rasi.nix
   ];
 
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
     extraConfig = {
-      modi = "run,drun,window";
+      #modi = "run,drun,window";
       icon-theme = "Zafiro-icons-Dark";
       show-icons = true;
       terminal = "kitty";
@@ -16,11 +17,11 @@
       location = 0;
       disable-history = false;
       hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-run = "   Run ";
-      display-window = " 﩯  Window";
-      display-Network = " 󰤨  Network";
-      sidebar-mode = true;
+      display-drun = "Apps";
+      #display-run = "   Run ";
+      #display-window = " 﩯  Window";
+      #display-Network = " 󰤨  Network";
+      #sidebar-mode = true;
     };
   };
 }
