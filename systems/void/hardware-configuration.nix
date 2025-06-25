@@ -8,6 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  # Newer kernel versions cause this machine to not boot for some reason :)
   boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
