@@ -62,6 +62,7 @@ in {
     };
     initContent = ''
       source ${./penguin-prompt.zsh-theme}
+      source <(fzf --zsh)
 
       bindkey '^ ' autosuggest-accept
 

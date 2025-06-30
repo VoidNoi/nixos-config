@@ -94,6 +94,7 @@ in {
     yt-dlp
     gh
     nodejs_22
+    nodePackages.browser-sync
     inetutils
     exiftool
     librewolf-bin
@@ -106,6 +107,7 @@ in {
     emmet-ls
     nur.repos.nltch.spotify-adblock
     streamrip
+    fzf
   ];
 
   home.sessionVariables = {

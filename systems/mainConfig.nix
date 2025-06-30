@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, pkgs-mine, hostname, username, deviceName, devices, ... }:
+{ config, inputs, pkgs, pkgs-unstable, hostname, username, deviceName, devices, ... }:
 {
   imports =
     [
@@ -166,7 +166,7 @@
   ];
 
   fonts.packages = [
-    pkgs-mine.serenityos-emoji-font
+    pkgs-unstable.serenityos-emoji-font
   ];
   
   xdg.portal = {

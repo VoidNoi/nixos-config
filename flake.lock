@@ -58,29 +58,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-mine": {
-      "locked": {
-        "lastModified": 1748787403,
-        "narHash": "sha256-/+O08mdds11JhWZ6FA8j1SXiAqyEX/H2Znpy6KsC5RU=",
-        "owner": "voidnoi",
-        "repo": "nixpkgs",
-        "rev": "2b2bc277893ae87e2dde829944cfb4c82b84374e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "voidnoi",
-        "ref": "serenityos-emoji-font",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1749564252,
-        "narHash": "sha256-JS4hjBnMZbcTMNSf3XLxtVprn53QN3HAc0SuAaaI8Ak=",
+        "lastModified": 1751197405,
+        "narHash": "sha256-k2jJTnoAlit/uJ6+DQi1AV3u6YUPggv2Ujpua8eVswA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "37a9c8af8f6b3e1236ff7ce25c636c2b8cd776b6",
+        "rev": "dbbf70e0a873fc50d5e27d476220b9a16e840edf",
         "type": "github"
       },
       "original": {
@@ -116,7 +100,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-mine": "nixpkgs-mine",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur"
       }

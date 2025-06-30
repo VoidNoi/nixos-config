@@ -111,6 +111,7 @@ in {
         "${modifier}+c" = "kill";
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+r" = "restart";
+        "${modifier}+Shift+e" = "exec ${NIXCONFIG}/scripts/powermenu";
         
         "${modifier}+space" = "focus mode_toggle";
         "${modifier}+Shift+space" = "floating toggle";
