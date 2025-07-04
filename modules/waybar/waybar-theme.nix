@@ -22,7 +22,7 @@
     #clock,
     #temperature,
     #pulseaudio,
-    #custom-cmus,
+    #mpd,
     #custom-spotify,
     #tray,
     #window,

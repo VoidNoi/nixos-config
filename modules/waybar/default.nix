@@ -6,7 +6,6 @@
   ];
   
   home.packages = with pkgs; [
-    cmus
     playerctl
     emacs-all-the-icons-fonts
   ];
@@ -24,8 +23,8 @@
           "LVDS-1"
         ];
         modules-left = [ "sway/workspaces" ];
-        modules-center = [ "sway/window" ];
-        modules-right = [ "custom/spotify" "custom/cmus" "pulseaudio" "temperature" "battery" "network" "clock" "tray" ];
+        modules-center = [ "custom/spotify" "mpd" ];
+        modules-right = [ "pulseaudio" "battery" "network" "clock" "tray" ];
 
         "sway/window" = {
 	        max-length = 70;
@@ -86,13 +85,13 @@
           format-source = "{volume}% ";
           format-source-muted = "";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            headphone = " ";
+            hands-free = " ";
+            headset = " ";
+            phone = " ";
+            portable = " ";
+            car = " ";
+            default = [" " " " " "];
           };
           on-click = "pavucontrol";
         };
@@ -102,14 +101,28 @@
           format-alt = "{:%Y-%m-%d}";
 	      };
 
-  	    "custom/cmus" = {
-  	      format = "♪ {}";
-  	      #max-length = 15;
-  	      interval = 10;
-  	      exec = "cmus-remote -C \"format_print '%a - %t'\""; # artist - title
-  	      exec-if = "pgrep cmus";
-  	      on-click = "cmus-remote -u";                      #toggle pause
-  	      escape = true;                                    #handle markup entities
+        "mpd" = {
+	        format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})";
+	        format-disconnected = "";
+	        format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped";
+	        interval = 2;
+	        consume-icons = {
+		        "on" = " ";
+	        };
+	        random-icons = {
+		        "on" = " ";
+	        };
+	        repeat-icons = {
+		        "on" = " ";
+	        };
+	        single-icons = {
+		        "on" = "1 ";
+	        };
+	        state-icons = {
+		        "paused" = " ";
+		        "playing" = " ";
+	        };
+          on-click = "rmpc togglepause";
         };
 
 	      "custom/spotify" = {

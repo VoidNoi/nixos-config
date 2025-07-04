@@ -31,14 +31,15 @@ in {
       #type = "Application";
       #comment = "Arduino IDE";
     #};
-    cmus = {
-      name = "Cmus";
-      exec = "cmus";
+    rmpc = {
+      name = "rmpc";
+      exec = "rmpc";
       terminal = true;
       type = "Application";
-      comment = "Cmus";
+      comment = "rmpc";
     };
   };
+  
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -62,6 +63,81 @@ in {
     };
   };
 
+  programs.rmpc = {
+    enable = true;
+    config = ''
+      (
+    address: "127.0.0.1:6600",
+    password: None,
+	  enable_config_hot_reload: true,
+    cache_dir: None,
+    on_song_change: None,
+    volume_step: 5,
+    max_fps: 30,
+    scrolloff: 0,
+    wrap_navigation: false,
+    enable_mouse: true,
+    status_update_interval_ms: 1000,
+    select_current_song_on_change: false,
+    album_art: (
+        method: Auto,
+        max_size_px: (width: 500, height: 500),
+        disabled_protocols: ["http://", "https://"],
+        vertical_align: Center,
+        horizontal_align: Center,
+    ),
+    search: (
+        case_sensitive: false,
+        mode: Contains,
+        tags: [
+            (value: "any",         label: "Any Tag"),
+            (value: "title",       label: "Title"),
+            (value: "album",       label: "Album"),
+            (value: "artist",      label: "Artist"),
+            (value: "filename",    label: "Filename"),
+            (value: "genre",       label: "Genre"),
+        ],
+    ),
+    artists: (
+        album_display_mode: SplitByDate,
+        album_sort_by: Date,
+    ),
+    tabs: [
+        (
+            name: "Playing",
+            pane: Split(
+                direction: Horizontal,
+                panes: [(size: "65%", pane: Pane(Queue)), (size: "35%", pane: Pane(AlbumArt))],
+            ),
+        ),
+        (
+            name: "Find",
+            pane: Pane(Search),
+        ),
+       (
+            name: "Lists",
+            pane: Pane(Playlists),
+        ),
+       (
+            name: "Dir",
+            pane: Pane(Directories),
+        ),
+    ],
+) 
+    '';
+  };
+  services.mpd = {
+    enable = true;
+    musicDirectory = "~/Music";
+    extraConfig = ''
+      audio_output {
+        type "pipewire"
+        name "My PipeWire Output"
+      }    
+    '';
+    network.startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
+  };
+    
   services.wlsunset = {
     enable = true;
     systemdTarget = "graphical-session.target";
@@ -108,6 +184,8 @@ in {
     nur.repos.nltch.spotify-adblock
     streamrip
     fzf
+    kdePackages.k3b
+    orca-slicer
   ];
 
   home.sessionVariables = {
