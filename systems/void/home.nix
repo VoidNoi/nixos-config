@@ -21,5 +21,8 @@
     kicad-small
     ani-cli
     wineWowPackages.waylandFull
+    orca-slicer
+    freecad-wayland
+    blender
   ];
 }

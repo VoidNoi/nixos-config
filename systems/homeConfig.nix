@@ -257,7 +257,6 @@ in {
     nur.repos.nltch.spotify-adblock
     streamrip
     fzf
-    orca-slicer
   ];
 
   home.sessionVariables = {
