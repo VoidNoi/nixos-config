@@ -102,7 +102,7 @@
 	      };
 
         "mpd" = {
-	        format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} [{elapsedTime:%M:%S}-{totalTime:%M:%S}]";
+	        format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{albumArtist} - {title} [{elapsedTime:%M:%S}-{totalTime:%M:%S}]";
 	        format-disconnected = "";
 	        format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped";
 	        interval = 2;
