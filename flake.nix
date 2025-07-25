@@ -24,14 +24,18 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, /*spicetify-nix,*/ ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, /*spicetify-nix,*/ ... }: let
     
     NIXCONFIG = "~/nixConfig";
     system = "x86_64-linux";
 
-    pkgs-unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
+    # Add unstable packages as an overlay so that they are available in the
+    # configs as `pkgs.unstable.<package-name>`
+    my-custom-overlay = final: prev: {
+      unstable = import inputs.nixpkgs-unstable {
+        system = "${prev.system}";
+        config.allowUnfree = true;
+      };
     };
 
   in {
@@ -49,12 +53,18 @@
          	  "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
 
-          inherit inputs pkgs-unstable;
+          inherit inputs;
         };
         modules = [
           ./systems/void
           ./systems/mainConfig.nix
 	        home-manager.nixosModules.home-manager
+          (
+            { config, pkgs, ... }:
+            {
+              nixpkgs.overlays = [ my-custom-overlay ];
+            }
+          )
 	        {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -74,7 +84,7 @@
                   bg = "${NIXCONFIG}/modules/sway/wallpaper.png fill";
                 };
               };
-              inherit NIXCONFIG pkgs-unstable;
+              inherit NIXCONFIG;
 
               #inherit spicetify-nix;
             };
@@ -94,7 +104,7 @@
 	          "Server" = { id = "WWR5KN6-KLEHBA7-KT76VHH-YWIJBWR-WUHHD5K-53JBP4B-VY3WNAI-EN6AHA5"; };
           };
 
-          inherit inputs pkgs-unstable;
+          inherit inputs;
         };
         modules = [
           ./systems/bebop
@@ -114,7 +124,7 @@
                   bg = "${NIXCONFIG}/modules/sway/wallpaper.png fill";
                 }; 
               };
-              inherit NIXCONFIG pkgs-unstable;
+              inherit NIXCONFIG;
 
               #inherit spicetify-nix;
             };
