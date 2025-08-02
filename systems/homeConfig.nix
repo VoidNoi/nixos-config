@@ -14,6 +14,7 @@ in {
     ../modules/waybar
     ../modules/emacs
     ../modules/sway    
+    ../modules/yazi
     # ../modules/spicetify
   ];
   
@@ -221,7 +222,7 @@ in {
     sunrise = "07:00";
     sunset = "21:00";
   };
-  
+
   home.packages = with pkgs; [
     neovim
     arduino-ide
@@ -257,6 +258,8 @@ in {
     nur.repos.nltch.spotify-adblock
     streamrip
     fzf
+    trash-cli
+    ripdrag
   ];
 
   home.sessionVariables = {
