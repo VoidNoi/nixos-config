@@ -12,7 +12,7 @@
         config.allowUnfree = true;
       };
       # Adds a modified version of davinci-resolve-studio
-      davinci-resolve-studio = final.callPackage.override ../nixpkgs/davinci-resolve {};
+      davinci-resolve-studio-paid = prev.callPackage ../nixpkgs/davinci-resolve {};
     })
   ];
 
