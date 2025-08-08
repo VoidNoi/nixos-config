@@ -24,5 +24,6 @@
     orca-slicer
     freecad-wayland
     blender
+    ghidra
   ];
 }

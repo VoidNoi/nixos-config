@@ -41,7 +41,13 @@ in {
       manager.prepend_keymap = [
         { run = "plugin mount"; on = [ "M" ]; }
         { run = ''shell 'ripdrag "$@" -x 2>/dev/null &' --confirm''; on = [ "<C-n>" ]; }
-        { run = "plugin restore"; on = [ "d" "u" ]; desc = "Restore last deleted files/folders"; }
+        { run = "plugin restore"; on = [ "<C-d>" "u" ]; desc = "Restore last deleted files/folders"; }
+      ];
+    };
+    settings = {
+      plugin.prepend_fetchers = [
+        { id = "git"; name = "*"; run = "git"; }
+        { id = "git"; name = "*/"; run = "git"; }
       ];
     };
   };
