@@ -87,7 +87,12 @@ environment.variables = {
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
- 
+
+  environment.sessionVariables = {
+    ROC_ENABLE_PRE_VEGA= 1;
+    RUSTICL_ENABLE= "amdgpu,amdgpu-pro,radv,radeon,radeonsi";
+    DRI_PRIME= 1;
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

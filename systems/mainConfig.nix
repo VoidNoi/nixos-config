@@ -184,6 +184,7 @@
     XDG_CURRENT_DESKTOP = "sway";
     XDG_SESSION_DESKTOP = "sway";
     QT_QPA_PLATFORM = "wayland;xcb";
+    _JAVA_AWT_WM_NONREPARENTING= 1;
   };
   
   # This value determines the NixOS release from which the default
