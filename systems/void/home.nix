@@ -24,6 +24,6 @@
     orca-slicer
     freecad-wayland
     blender
-    ghidra
+    davinci-resolve-studio-paid
   ];
 }

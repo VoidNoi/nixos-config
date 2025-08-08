@@ -28,6 +28,7 @@
     enable = true;
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
+
 environment.variables = {
     RUSTICL_ENABLE = "radeonsi";
   };

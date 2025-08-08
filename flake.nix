@@ -29,25 +29,6 @@
     NIXCONFIG = "~/nixConfig";
     system = "x86_64-linux";
 
-    # Add unstable packages as an overlay so that they are available in the
-    # configs as `pkgs.unstable.<package-name>`
-    my-custom-overlay = final: prev: {
-      unstable = import inputs.nixpkgs-unstable {
-        system = "${prev.system}";
-        config.allowUnfree = true;
-      };
-      davinci-resolve-studio-paid = final.callPackage ./davinci-resolve-paid.nix {
-        desktopItem = prev.e.desktopItem.override (d: {
-          exec = "ROC_ENABLE_PRE_VEGA=1 RUSTICL_ENABLE=amdgpu,amdgpu-pro,radv,radeon,radeonsi DRI_PRIME=1 QT_QPA_PLATFORM=xcb ${d.exec}";
-        });
-      };
-      #ghidra = prev.ghidra.override (e: rec {
-        #desktopItem = e.desktopItem.override (d: {
-          #exec = "_JAVA_AWT_WM_NONREPARENTING=1 ghidra ${d.exec}";
-        #});
-      #});
-    };
-
   in {
     
     nixosConfigurations = {
@@ -69,12 +50,6 @@
           ./systems/void
           ./systems/mainConfig.nix
 	        home-manager.nixosModules.home-manager
-          (
-            { config, pkgs, ... }:
-            {
-              nixpkgs.overlays = [ my-custom-overlay ];
-            }
-          )
 	        {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

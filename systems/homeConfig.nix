@@ -260,7 +260,7 @@ in {
     fzf
     trash-cli
     ripdrag
-    davinci-resolve-studio-paid
+    ghidra
   ];
 
   home.sessionVariables = {

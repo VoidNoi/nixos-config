@@ -3,6 +3,7 @@
   imports =
     [
       ../modules/nix-ld/default.nix
+      ../modules/overlays
       inputs.home-manager.nixosModules.default
     ];
 
@@ -17,10 +18,6 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "45.148.31.10" "9.9.9.9" ];
   services.rpcbind.enable = true;
-
-  nixpkgs.overlays = [
-    inputs.nur.overlays.default
-  ];
 
 #  systemd.mounts = [{
 #    type = "nfs";
