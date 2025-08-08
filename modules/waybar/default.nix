@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-
-  imports = [
-    ./waybar-theme.nix
-  ];
   
   home.packages = with pkgs; [
     playerctl
@@ -12,6 +8,7 @@
 
   programs.waybar = {
     enable = true;
+    style = (builtins.readFile ./style.css);
     settings = {
       mainBar = {
         layer = "top";

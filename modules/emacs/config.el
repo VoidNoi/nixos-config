@@ -554,7 +554,6 @@ Possible values for list-type are: `recents', `bookmarks', `projects',
   (dashboard-icon-type 'nerd-icons)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)     ;; display icons on both GUI and terminal
-  
   (dashboard-banner-logo-title "We'll protect this planet. You and me.")
   (dashboard-set-init-info t)
   (dashboard-display-icons-p t)  ;; This makes sure the icons are displayed before the dashboard loads
